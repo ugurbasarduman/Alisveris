@@ -1,0 +1,111 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<Anladim.Models.EntityFramework.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var cat = (Anladim.Models.EntityFramework.Category)ViewBag.Cat;
+    ViewBag.AscSortParm = "asc";
+    ViewBag.DescSortParm = "desc";
+}
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Content/kalbi.css" rel="stylesheet" />
+<div class="container bootdey">
+    <div class="col-md-3">
+        <section class="panel">
+            <div class="panel-body">
+                @using (Html.BeginForm("Index", "Category", FormMethod.Get))
+                {
+                    <div class="form-group">
+                        @Html.TextBox("searching", ViewBag.CurrentFilter as string)
+                        <button type="submit" value="Ara" class="btn btn-xs">Ara</button>
+                    </div>
+
+
+                }
+            </div>
+        </section>
+
+        <div class="row">
+            <div class="col-sm">
+                @using (Html.BeginForm("Index", "Category", FormMethod.Get, new { id = "Form1" }))
+                {
+                    <div class="col-sm-8">
+                        Sırala:
+                        @Html.DropDownList("sortOrder", new List<SelectListItem>
+
+                         {
+                            new SelectListItem{ Text= "Pahalıdan Ucuza", Value = "desc" },
+                            new SelectListItem{ Text= "Ucuzdan Pahalıya", Value = "asc" }
+                         }, "-- Sırala --", new { @class = "form-control" })
+
+                    </div>
+                    <br />
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                                <input type="submit" class="btn btn-default" value="Filter" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-9">
+        <section class="panel">
+            <div class="panel-body">
+                <div class="pull-left"> <h4>@cat.CategoryName</h4></div>
+            </div>
+        </section>
+
+        <div class="row product-list">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <section class="panel">
+                        <div class="pro-img-box">
+                            <img src="@item.Image" alt="250x220" />
+
+                            @if (User.IsInRole("U"))
+                            {
+                                <a href="@Url.Action("OrderNow","Cart", new {id=item.ProductId })" id="addtocart" class="adtocart">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </a>
+                            }
+                            else if (User.IsInRole("A"))
+                            {
+                                <a href="@Url.Action("OrderNow","Cart", new {id=item.ProductId })" id="addtocart" class="adtocart">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="/Security/Login" class="adtocart">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </a>
+                            }
+                        </div>
+
+                        <div class="panel-body text-center">
+                            <h4>
+                                <a href="#" class="pro-title">
+                                    @item.Name
+                                </a>
+                            </h4>
+                            <h6>
+                                @item.Brand /
+                                @item.Model
+                            </h6>
+                            <p class="price">@item.Price.ToString("##.## TL")</p>
+                        </div>
+                    </section>
+                </div>}
+
+        </div>
+    </div>
+    
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>

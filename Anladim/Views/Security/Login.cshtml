@@ -1,0 +1,38 @@
+﻿@model Anladim.Models.EntityFramework.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Giris Yap</h2>
+        @ViewBag.Mesaj
+        @using (Html.BeginForm("Login", "Security", FormMethod.Post))
+        {
+            <div class="form-group">
+                @Html.LabelFor(x => x.Mail)
+                @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Password)
+                @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+            </div>
+            <button type="submit" class="btn btn-block btn-success">Giris Yap</button>
+            @*<button class="btn btn-block btn-success">Kayit Ol</button>*@
+            <br />
+
+            <a href="/KayitOl">
+                <input type="button" class="btn btn-block btn-success" value="Kayıt Ol" />
+            </a>
+        }
+    </div>
+</body>
+</html>

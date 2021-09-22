@@ -1,0 +1,80 @@
+﻿@using Anladim.ViewModels;
+@{
+    ViewBag.Title = "IndexDeneme";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Cart> cart = (List<Cart>)Session["Cart"];
+}
+
+<h2>Sepet</h2>
+@{
+    if (Session["Cart"] != null)
+    {
+
+        using (Html.BeginForm("UpdateCart", "Cart", FormMethod.Post))
+        {
+            <table class="table table-bordered">
+                <tr>
+                    <th>İsim</th>
+                    <th>Fiyat</th>
+                    <th>Adet</th>
+                    <th>Toplam Fiyat</th>
+                </tr>
+
+                @foreach (var item in (List<Cart>)Session["Cart"])
+                {
+                    <tr>
+                        <td>@Html.ActionLink(item.Product.Name, "Details", "Product", new { id = item.Product.ProductId }, new { @class = "delete-shopping" })</td>
+                        <td>@(String.Format("{0:N0}", item.Product.Price))TL</td>
+                        <td>
+                            <input type="number" name="quantity" id="quantity" style="width:50px" value="@item.Quantity" />
+                            &nbsp;<span id="errmsg"></span>
+                        </td>
+                        <td>@(String.Format("{0:N0}", item.Product.Price * item.Quantity))TL</td>
+                        <td>
+                            @Html.ActionLink("Sil", "Delete", "Cart", new { id = item.Product.ProductId },
+                            new { onclick = "return confirm ('Silmek istediğinize emin misiniz?');", @class = "delete-shopping" })
+                        </td>
+                    </tr>
+                }@*End of foreach cart items*@
+
+                <tr>
+                    <td colspan="3" class="total-price-text">Toplam:</td>
+                    <td class="total-price-digit">
+                        @{
+                            List<Cart> temp = (List<Cart>)Session["Cart"];
+                            var total = String.Format("{0:N0}", temp.Sum(x => x.Quantity * x.Product.Price));
+                        }
+
+                        @total TL
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <button class="btn btn-success">Sepeti Güncelle</button>
+            @*<input type="submit" value="Sepeti Güncelle" class="update-shopping" />*@
+            <a href="/AdresListesi">Onayla</a>
+
+        } @*End of form*@
+
+    } @*End of if session*@
+
+    else
+    {
+        <h4>SEPETİNİZ BOŞ</h4>
+    }
+
+}
+<script src="~/Scripts/Cart.js"></script>
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        //called when key is pressed in textbox
+        $("#quantity").keypress(function (e) {
+            //if the letter is not a digit, we will display the error message and dont allow them to type anything
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                //we will display error message
+                $("#errmsg").html("Sadece Sayı Gir!").show().fadeOut("slow");
+                return false;
+            }
+        });
+    });
+</script>*@

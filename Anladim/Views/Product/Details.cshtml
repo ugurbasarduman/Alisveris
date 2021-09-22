@@ -1,0 +1,68 @@
+﻿@model Anladim.Models.EntityFramework.Product
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+
+
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <div class="container">
+            <div class="col-xs-12 col-md-6 bootstrap snippets bootdeys">
+                <div class="product-content product-wrap clearfix">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12 col-xs-12">
+                            <div class="product-image">
+                                <img src="@Model.Image" alt="194x228" class="img-responsive">
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-12 col-xs-12">
+                            <div class="product-deatil">
+                                <h5 class="name">
+                                    @Model.Name
+                                </h5>
+                                <p class="price-container">
+                                    <span>@Model.Price.ToString("##.## TL")</span>
+                                </p>
+
+                            </div>
+                            <div class="description">
+                                <p>@Model.Description</p>
+                            </div>
+                            <div class="product-info smart-form">
+                                <div class="row">
+                                    <div>
+                                        @if (User.IsInRole("U"))
+                                        {   
+                                            <a href="@Url.Action("OrderNow","Cart", new {id=Model.ProductId })">Sepete Ekle</a>
+                                            @*<a href="#" id="addtocart" class="adtocart" data-pId="@Model.ProductId">
+                                                Sepete Ekle
+                                            </a>*@
+                                        }
+                                        else if (User.IsInRole("A"))
+                                        {
+                                            
+                                            <a href="@Url.Action("OrderNow","Cart", new {id=Model.ProductId })">Sepete Ekle</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="/Security/Login" class="adtocart">
+                                                Sepete Ekle
+                                            </a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="kal" id="Modal"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
