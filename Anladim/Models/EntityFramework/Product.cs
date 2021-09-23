@@ -25,6 +25,5 @@ namespace Anladim.Models.EntityFramework
         [Required]
         [Range(1, 999999999.99)]
         public decimal Price { get; set; }
-        public int? QuantityProd { get; set; }
     }
 }

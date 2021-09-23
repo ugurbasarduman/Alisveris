@@ -10,17 +10,18 @@
             <td>Alınan Ürun</td>
             <td>Alınan Adet</td>
             <td>Ürünün Fiyatı</td>
-            
+
         </tr>
         @foreach (var item in Model.OrderProducts)
         {
             <tr>
-                
+
                 <th>@item.Product.Name</th>
                 <th>@item.Quantity</th>
                 <th>@item.Product.Price</th>
-                
-            </tr>}
+
+            </tr>
+}
     </thead>
 </table>
 <table class="table table-bordered">
@@ -28,13 +29,12 @@
         <tr>
             <td>Toplam Ödenilen Tutar</td>
             <th>@Model.TotalPrice.ToString("##.## TL")</th>
-            
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>Gönderilen Adres</td>
-            <th>@Model.UserAddress.Address</th>
+            <th>@Model.UserAddress.Title<br />@Model.UserAddress.City<br />@Model.UserAddress.Address</th>
         </tr>
     </tbody>
 </table>

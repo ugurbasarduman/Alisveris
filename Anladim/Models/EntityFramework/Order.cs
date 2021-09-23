@@ -22,7 +22,6 @@ namespace Anladim.Models.EntityFramework
         //public Status Status { get; set; }
         [Range(1, 99999999999.99)]
         public decimal TotalPrice { get; set; }
-        //public virtual List<OrderPayment> OrderPayments { get; set; }
         public virtual List<OrderProduct> OrderProducts { get; set; }
     }
 }

@@ -200,6 +200,10 @@
     <Compile Include="Migrations\202109220618539_AddressUserIdNull.Designer.cs">
       <DependentUpon>202109220618539_AddressUserIdNull.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109230619249_classchanges.cs" />
+    <Compile Include="Migrations\202109230619249_classchanges.Designer.cs">
+      <DependentUpon>202109230619249_classchanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityFramework\Category.cs" />
     <Compile Include="Models\EntityFramework\Order.cs" />
@@ -349,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109220618539_AddressUserIdNull.resx">
       <DependentUpon>202109220618539_AddressUserIdNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109230619249_classchanges.resx">
+      <DependentUpon>202109230619249_classchanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

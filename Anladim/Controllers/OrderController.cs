@@ -18,7 +18,7 @@ namespace Anladim.Controllers
         {
             mail = (string)Session["LoginUserMail"];
             var loginUserId = db.Users.Where(x => x.Mail == mail).Select(x => x.UserId).FirstOrDefault();
-            var model = db.UserAddresses.Where(x => x.UserId == loginUserId);
+            var model = db.UserAddresses.Where(x => x.UserId == loginUserId).ToList(); //unutma
             return View(model);
         }
         [HttpGet]
@@ -26,6 +26,7 @@ namespace Anladim.Controllers
         {
             return View();
         }
+
         public ActionResult NewUserAddress(UserAddress userAddress, string mail)
         {
             mail = (string)Session["LoginUserMail"];
@@ -36,6 +37,9 @@ namespace Anladim.Controllers
             db.SaveChanges();
             return RedirectToAction("AddressList");   
         }
+
+
+        [Route("NewOrder/{id}")]
         public ActionResult NewOrder(int id, string mail)
         {
             List<Cart> lstCart = (List<Cart>)Session["Cart"];
