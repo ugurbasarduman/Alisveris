@@ -5,7 +5,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Siparişi Onayla</h2>
+<div class="underlined-title">
+    <div class="editContent">
+        <h1 class="text-center latestitems">Siparişi Onayla</h1>
+    </div>
+    <div class="wow-hr type_short">
+        <span class="wow-hr-h">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+        </span>
+    </div>
+</div>
 
 <p>
     @Html.ActionLink("Yeni Adres Oluştur", "NewUserAddress")
@@ -38,29 +49,35 @@
             </td>
             <td>
                 @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Onayla
-                </button>*@
+            Onayla
+        </button>*@
                 @*<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                Siparişi Onaylamak İstediğinizden Emin Mısiniz?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>*@
-                                <a href="/NewOrder/@item.UserAddressId">Onayla</a>
-                            @*</div>
-                        </div>
-                    </div>
-                </div>*@
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Siparişi Onaylamak İstediğinizden Emin Mısiniz?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>*@
+                <a href="/NewOrder/@item.UserAddressId">Onayla</a>
+                
+                @*</div>
+                </div>
+            </div>
+        </div>*@
             </td>
         </tr>
     }
 </table>
+<div id="edd_checkout_form_wrap" class="edd_clearfix">
+    <fieldset id="edd_purchase_submit">
+        
+    </fieldset>
+</div>
 @*@Html.ActionLink("Onayla","Index","Home")*@

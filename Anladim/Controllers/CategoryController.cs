@@ -62,7 +62,7 @@ namespace Anladim.Controllers
                     al = al.OrderByDescending(x => x.ProductId);
                     break;
             }
-            int pageSize = 3;
+            int pageSize = 12;
             int pageNumber = (page ?? 1);
             return View(al.ToPagedList(pageNumber, pageSize));
             //return View(al.ToPagedList<Product>(_sayfano, 12));

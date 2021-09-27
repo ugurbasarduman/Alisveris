@@ -38,7 +38,7 @@ namespace Anladim.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Login");
+            return Redirect("/");
         }
     }
 }

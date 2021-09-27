@@ -7,12 +7,48 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="">
+    <link href="~/HTML - Scorilo 1.0.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/HTML - Scorilo 1.0.1/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,600,700" rel="stylesheet">
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <title>Login</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container toparea">
+        <div id="edd_checkout_wrap" class="col-md-8 col-md-offset-2">
+            <div id="edd_checkout_form_wrap" class="edd_clearfix">
+                @ViewBag.Mesaj
+                @using (Html.BeginForm("Login", "Security", FormMethod.Post, new { @class = "edd_form", id = "edd_purchase_form" }))
+                {
+                <fieldset id="edd_checkout_user_info" style="margin-top:25%; margin-right:22%; margin-left:22%; font-size:16px; line-height:1.7">
+                    <p id="edd-email-wrap">
+                        @Html.LabelFor(x => x.Mail, new { @class = "edd-label" })
+                        @Html.TextBoxFor(x => x.Mail, new { @class = "edd-input required", id = "edd-email" })
+                    </p>
+                    <p id="edd-password-wrap">
+                        @Html.LabelFor(x => x.Password, new { @class = "edd-label" })
+                        @Html.PasswordFor(x => x.Password, new { @class = "edd-input required", id = "edd-password" })
+                    </p>
+                    <div class="row" style="display:inline-flex; margin-top:15px">
+                        <button type="submit" class="btn btn-block btn-success" style="margin-left:15px">Giris Yap</button>
+                        <a href="/KayitOl">
+                            <input type="button" class="btn btn-info btn-info" style="margin-left:7px" value="Kayıt Ol" />
+                        </a>
+                    </div>
+                </fieldset>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+@*<div class="container">
         <h2>Giris Yap</h2>
         @ViewBag.Mesaj
         @using (Html.BeginForm("Login", "Security", FormMethod.Post))
@@ -26,13 +62,11 @@
                 @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
             </div>
             <button type="submit" class="btn btn-block btn-success">Giris Yap</button>
-            @*<button class="btn btn-block btn-success">Kayit Ol</button>*@
+            <button class="btn btn-block btn-success">Kayit Ol</button>
             <br />
 
             <a href="/KayitOl">
                 <input type="button" class="btn btn-block btn-success" value="Kayıt Ol" />
             </a>
         }
-    </div>
-</body>
-</html>
+    </div>*@

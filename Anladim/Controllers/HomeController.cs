@@ -17,6 +17,7 @@ namespace Anladim.Controllers
         Context db = new Context();
 
         //public ActionResult Index(string searching, int? sayfano, string sortOrder)
+
         public ActionResult Index(string sortOrder, string currentFilter, string searching, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -53,7 +54,7 @@ namespace Anladim.Controllers
                     al = al.OrderByDescending(x => x.ProductId);
                     break;
             }
-            int pageSize = 3;
+            int pageSize = 12;
             int pageNumber = (page ?? 1);
             return View(al.ToPagedList(pageNumber, pageSize));
         }

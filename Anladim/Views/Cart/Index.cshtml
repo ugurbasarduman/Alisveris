@@ -1,71 +1,203 @@
 ﻿@using Anladim.ViewModels;
 @{
     ViewBag.Title = "IndexDeneme";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
     List<Cart> cart = (List<Cart>)Session["Cart"];
 }
 
-<h2>Sepet</h2>
+<div class="underlined-title">
+    <div class="editContent">
+        <h1 class="text-center latestitems">SEPET</h1>
+    </div>
+    <div class="wow-hr type_short">
+        <span class="wow-hr-h">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+        </span>
+    </div>
+</div>
 @{
     if (Session["Cart"] != null)
     {
-
-        using (Html.BeginForm("UpdateCart", "Cart", FormMethod.Post))
-        {
-            <table class="table table-bordered">
-                <tr>
-                    <th>İsim</th>
-                    <th>Fiyat</th>
-                    <th>Adet</th>
-                    <th>Toplam Fiyat</th>
-                </tr>
-
-                @foreach (var item in (List<Cart>)Session["Cart"])
+        <section class="item content">
+            <div class="container toparea">
+                @using (Html.BeginForm("UpdateCart", "Cart", FormMethod.Post))
                 {
-                    <tr>
-                        <td>@Html.ActionLink(item.Product.Name, "Details", "Product", new { id = item.Product.ProductId }, new { @class = "delete-shopping" })</td>
-                        <td>@(String.Format("{0:N0}", item.Product.Price))TL</td>
-                        <td>
-                            <input type="number" name="quantity" id="quantity" style="width:50px" value="@item.Quantity" />
-                            &nbsp;<span id="errmsg"></span>
-                        </td>
-                        <td>@(String.Format("{0:N0}", item.Product.Price * item.Quantity))TL</td>
-                        <td>
-                            @Html.ActionLink("Sil", "Delete", "Cart", new { id = item.Product.ProductId },
-                            new { onclick = "return confirm ('Silmek istediğinize emin misiniz?');", @class = "delete-shopping" })
-                        </td>
-                    </tr>
-                }@*End of foreach cart items*@
+                    <div id="edd_checkout_wrap" class="col-md-8 col-md-offset-2">
 
-                <tr>
-                    <td colspan="3" class="total-price-text">Toplam:</td>
-                    <td class="total-price-digit">
-                        @{
-                            List<Cart> temp = (List<Cart>)Session["Cart"];
-                            var total = String.Format("{0:N0}", temp.Sum(x => x.Quantity * x.Product.Price));
-                        }
+                        <div id="edd_checkout_cart_wrap">
+                            <table id="edd_checkout_cart" class="ajaxed">
+                                <thead>
+                                    <tr class="edd_cart_header_row">
+                                        <th class="edd_cart_item_name">
+                                            Item Name
+                                        </th>
+                                        <th class"quantity_add">
+                                            Quantity
+                                        </th>
+                                        <th class="edd_cart_item_price">
+                                            Item Price
+                                        </th>
+                                        <th class="edd_cart_actions">
+                                            Sil
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in (List<Cart>)Session["Cart"])
+                                    {
+                                        <tr class="edd_cart_item" id="edd_cart_item_0_25" data-download-id="25">
+                                            <td class="edd_cart_item_name">
+                                                <div class="edd_cart_item_image">
+                                                    <img width="25" height="25" src="@item.Product.Image" alt="">
+                                                </div>
+                                                <span class="edd_checkout_cart_item_title">@item.Product.Name</span>
+                                            </td>
+                                            <td>
+                                                <input type="number" name="quantity" id="quantity" style="width:50px" value="@item.Quantity" />
+                                                &nbsp;<span id="errmsg"></span>
+                                            </td>
+                                            <td class="edd_cart_item_price">
+                                                @(String.Format("{0:N0}", item.Product.Price * item.Quantity))TL
+                                            </td>
+                                            <td class="edd_cart_actions">
+                                                @Html.ActionLink("Sil", "Delete", "Cart", new { id = item.Product.ProductId },
+                                                 new
+                                                      {
+                                                          onclick = "return confirm ('Silmek istediğinize emin misiniz?');",
+                                                     @class = "delete-shopping"
+                                                      })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    @*<tr class="edd_cart_footer_row">
+                                            <th colspan="5">
+                                                <a class="edd-cart-saving-button edd-submit button " id="edd-save-cart-button" href="#">Save Cart</a>
+                                            </th>
+                                        </tr>
+                                        <tr class="edd_cart_footer_row edd_cart_discount_row" style="display:none;">
+                                            <th colspan="5" class="edd_cart_discount">
+                                            </th>
+                                        </tr>*@
+                                    <tr class="edd_cart_footer_row">
+                                        <th colspan="5" class="edd_cart_total">
+                                            Toplam: <span class="edd_cart_amount" data-subtotal="11.99" data-total="11.99">
+                                                @{
+                                                    List<Cart> cartt = (List<Cart>)Session["Cart"];
+                                                    var total = String.Format("{0:N0}", cartt.Sum(x => x.Quantity * x.Product.Price));
+                                                }
+                                                @total TL
+                                            </span>
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <div id="edd_checkout_form_wrap" class="edd_clearfix">
+                                <fieldset id="edd_purchase_submit">
+                                    <button class="btn btn-success">Sepeti Güncelle</button>
+                                    <a href="/AdresListesi">
+                                        <i class="fa fa-credit-card"></i>
+                                    Onayla</a>
+                                    @*<a class="edd-cart-saving-button edd-submit button " id="edd-save-cart-button" href="#">Save Cart</a>*@
+                                </fieldset>
+                            </div>
+                        </div>
 
-                        @total TL
-                    </td>
-                </tr>
-            </table>
-            <br />
-            <button class="btn btn-success">Sepeti Güncelle</button>
-            @*<input type="submit" value="Sepeti Güncelle" class="update-shopping" />*@
-            <a href="/AdresListesi">Onayla</a>
 
-        } @*End of form*@
-
-    } @*End of if session*@
+                        @*<div id="edd_checkout_form_wrap" class="edd_clearfix">
+                                <form id="edd_purchase_form" class="edd_form" action="#" method="post">
+                                    <fieldset id="edd_purchase_submit">
+                                        <input type="hidden" name="edd_action" value="purchase">
+                                        <input type="hidden" name="edd-gateway" value="manual">
+                                        <input type="submit" class="edd-submit button" id="edd-purchase-button" name="edd-purchase" value="Purchase">
+                                    </fieldset>
+                                </form>
+                            </div>*@
+                    </div>
+                }
+            </div>
+        </section>
+    }
 
     else
     {
-        <h4>SEPETİNİZ BOŞ</h4>
-    }
 
+        <div id="edd_checkout_form_wrap" class="edd_clearfix">
+            <div class="center" style="text-align:center">
+                <fieldset id="edd_purchase_submit">
+                    <h2>Sepetinizde Urun Bulunmamaktadir.</h2>
+                </fieldset>
+            </div>
+        </div>
+
+    }
 }
+
+@*<h2>Sepet</h2>
+    @{
+        if (Session["Cart"] != null)
+        {
+
+            using (Html.BeginForm("UpdateCart", "Cart", FormMethod.Post))
+            {
+                <table class="table table-bordered">
+                    <tr>
+                        <th>İsim</th>
+                        <th>Fiyat</th>
+                        <th>Adet</th>
+                        <th>Toplam Fiyat</th>
+                    </tr>
+
+                    @foreach (var item in (List<Cart>)Session["Cart"])
+                    {
+                        <tr>
+                            <td>@Html.ActionLink(item.Product.Name, "Details", "Product", new { id = item.Product.ProductId }, new { @class = "delete-shopping" })</td>
+                            <td>@(String.Format("{0:N0}", item.Product.Price))TL</td>
+                            <td>
+                                <input type="number" name="quantity" id="quantity" style="width:50px" value="@item.Quantity" />
+                                &nbsp;<span id="errmsg"></span>
+                            </td>
+                            <td>@(String.Format("{0:N0}", item.Product.Price * item.Quantity))TL</td>
+                            <td>
+                                @Html.ActionLink("Sil", "Delete", "Cart", new { id = item.Product.ProductId },
+                                new { onclick = "return confirm ('Silmek istediğinize emin misiniz?');", @class = "delete-shopping" })
+                            </td>
+                        </tr>
+                    }End of foreach cart items
+
+                    <tr>
+                        <td colspan="3" class="total-price-text">Toplam:</td>
+                        <td class="total-price-digit">
+                            @{
+                                List<Cart> temp = (List<Cart>)Session["Cart"];
+                                var total = String.Format("{0:N0}", temp.Sum(x => x.Quantity * x.Product.Price));
+                            }
+
+                            @total TL
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <button class="btn btn-success">Sepeti Güncelle</button>
+                <input type="submit" value="Sepeti Güncelle" class="update-shopping" />
+                <a href="/AdresListesi">Onayla</a>
+
+            } End of form
+
+        } End of if session
+
+        else
+        {
+            <h4>SEPETİNİZ BOŞ</h4>
+        }
+
+    }*@
+
 <script src="~/Scripts/Cart.js"></script>
-@*<script type="text/javascript">
+<script type="text/javascript">
     $(document).ready(function () {
         //called when key is pressed in textbox
         $("#quantity").keypress(function (e) {
@@ -77,4 +209,4 @@
             }
         });
     });
-</script>*@
+</script>

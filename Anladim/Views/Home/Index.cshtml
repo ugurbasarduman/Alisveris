@@ -9,21 +9,102 @@
     ViewBag.DescSortParm = "desc";
 }
 
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
-<link href="~/Content/kalbi.css" rel="stylesheet" />
-<div class="container bootdey">
-    <div class="col-md-3">
-        <section class="panel">
-            <div class="panel-body">
-                @using (Html.BeginForm("Index", "Home", FormMethod.Get))
-                {
-                    <div class="form-group">
-                        @Html.TextBox("searching", ViewBag.CurrentFilter as string)
-                        <button type="submit" value="Ara" class="btn btn-xs">Ara</button>
-                    </div>
-                }
+
+<div class="underlined-title">
+    <div class="editContent">
+        <h1 class="text-center latestitems">ÜRÜNLERİMİZ</h1>
+    </div>
+    <div class="wow-hr type_short">
+        <span class="wow-hr-h">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+        </span>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { id = "Form1" }))
+        {
+            <div class="col-sm-8">
+                @Html.DropDownList("sortOrder", new List<SelectListItem>
+
+                    {
+                    new SelectListItem{ Text= "Pahalıdan Ucuza", Value = "desc" },
+                    new SelectListItem{ Text= "Ucuzdan Pahalıya", Value = "asc" }
+                    }, "-- Sırala --", new { @class = "form-control" })
             </div>
-        </section>
+            <br />
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default" value="Filter" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="productbox">
+                <div class="fadeshop">
+                    <div class="captionshop text-center" style="display: none;">
+                        <h3>@item.Brand - @item.Model</h3>
+                        <p>
+                            @item.Description
+                        </p>
+                        <p>
+                            <a href="@Url.Action("OrderNow", "Cart", new { id = item.ProductId })" class="learn-more detailslearn"><i class="fa fa-shopping-cart"></i> Satın Al</a>
+                            <a href="@Url.Action("Details", "Product", new { id = item.ProductId })" class="learn-more detailslearn"><i class="fa fa-link"></i> Detaylar</a>
+                        </p>
+                    </div>
+                    <span class="maxproduct"><img src="@item.Image" alt="" style="height:300px"></span>
+                </div>
+                <div class="product-details">
+                    <a href="@Url.Action("Details", "Product", new { id = item.ProductId })">
+                        <h1>@item.Name</h1>
+                    </a>
+                    <span class="price">
+                        <span class="edd_price">@item.Price.ToString("##.## TL")</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+          new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+
+
+
+
+
+
+
+@*<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/kalbi.css" rel="stylesheet" />
+    <div class="container bootdey">
+        <div class="col-md-3">
+            <section class="panel">
+                <div class="panel-body">
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                    {
+                        <div class="form-group">
+                            @Html.TextBox("searching", ViewBag.CurrentFilter as string)
+                            <button type="submit" value="Ara" class="btn btn-xs">Ara</button>
+                        </div>
+                    }
+                </div>
+            </section>
 
             <div class="row">
                 <div class="col-sm">
@@ -36,13 +117,13 @@
                              {
                                 new SelectListItem{ Text= "Pahalıdan Ucuza", Value = "desc" },
                                 new SelectListItem{ Text= "Ucuzdan Pahalıya", Value = "asc" }
-                             }, "-- Sırala --",new { @class="form-control"})
+                             }, "-- Sırala --", new { @class = "form-control" })
 
                         </div>
                         <br />
                         <div class="col-sm-3">
                             <div class="form-group">
-                                    <input type="submit" class="btn btn-default" value="Filter" />
+                                <input type="submit" class="btn btn-default" value="Filter" />
                             </div>
                         </div>
                     }
@@ -50,83 +131,63 @@
             </div>
             <br />
 
-        @*@Html.ActionLink("Ucuzdan Pahalıya", "Index", new { sortOrder = ViewBag.AscSortParm })
-
-        @Html.ActionLink("Pahalıdan Ucuza", "Index", new { sortOrder = ViewBag.DescSortParm })*@
-
-
-        @*<div class="content-rangeInputRoot">
-                <div class="content-rangeInputContainer">
-                    <div class="">
-                        <input placeholder="En az" value="" class="minxsa">
-                    </div>
-                    <div class="">
-                        <input placeholder="En çok" value="" class="maxxsa">
-                    </div>
+        </div>
+        <div class="col-md-9">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="pull-left"> <h4>Ana Sayfa</h4></div>
                 </div>
-                <button class="" disabled="">
+            </section>
+            <div class="row product-list">
+                @foreach (var item in Model)
+                {
 
-                </button>
-            </div>*@
+                    <div class="col-md-4">
+                        <section class="panel">
+                            <div class="pro-img-box">
+                                <img src="@item.Image" alt="250x220" />
+                                @if (User.IsInRole("U"))
+                                {
+                                    <a href="@Url.Action("OrderNow","Cart", new {id=item.ProductId })" id="addtocart" class="adtocart">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </a>
+                                }
+                                else if (User.IsInRole("A"))
+                                {
+                                    <a href="@Url.Action("OrderNow","Cart", new {id=item.ProductId })" id="addtocart" class="adtocart">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="/Security/Login" class="adtocart">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </a>
+                                }
+                            </div>
 
+                            <div class="panel-body text-center">
+                                <h4>
+                                    <a href="@Url.Action("Details","Product",new {id = item.ProductId })" class="pro-title">
+                                        @item.Name
+                                    </a>
+                                </h4>
+                                <h6>
+                                    @item.Category.CategoryName /
+                                    @item.Brand /
+                                    @item.Model
+                                </h6>
+                                <p class="price">@item.Price.ToString("##.## TL")</p>
+                            </div>
+                        </section>
+                    </div>}
 
-    </div>
-    <div class="col-md-9">
-        <section class="panel">
-            <div class="panel-body">
-                <div class="pull-left"> <h4>Ana Sayfa</h4></div>
             </div>
-        </section>
-        <div class="row product-list">
-            @foreach (var item in Model)
-            {
-
-                <div class="col-md-4">
-                    <section class="panel">
-                        <div class="pro-img-box">
-                            <img src="@item.Image" alt="250x220" />
-                            @if (User.IsInRole("U"))
-                            {
-                                <a href="@Url.Action("OrderNow","Cart", new {id=item.ProductId })" id="addtocart" class="adtocart">
-                                    <i class="fa fa-shopping-cart"></i>
-                                </a>
-                            }
-                            else if (User.IsInRole("A"))
-                            {
-                                <a href="@Url.Action("OrderNow","Cart", new {id=item.ProductId })" id="addtocart" class="adtocart">
-                                    <i class="fa fa-shopping-cart"></i>
-                                </a>
-                            }
-                            else
-                            {
-                                <a href="/Security/Login" class="adtocart">
-                                    <i class="fa fa-shopping-cart"></i>
-                                </a>
-                            }
-                        </div>
-
-                        <div class="panel-body text-center">
-                            <h4>
-                                <a href="@Url.Action("Details","Product",new {id = item.ProductId })" class="pro-title">
-                                    @item.Name
-                                </a>
-                            </h4>
-                            <h6>
-                                @item.Category.CategoryName /
-                                @item.Brand /
-                                @item.Model
-                            </h6>
-                            <p class="price">@item.Price.ToString("##.## TL")</p>
-                        </div>
-                    </section>
-                </div>}
 
         </div>
-
-    </div>
-    <br />
+        <br />
 
 
-    @Html.PagedListPager(Model, page => Url.Action("Index",
-        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-</div>
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>*@

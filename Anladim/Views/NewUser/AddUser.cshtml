@@ -9,68 +9,77 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="">
+    <link href="~/HTML - Scorilo 1.0.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/HTML - Scorilo 1.0.1/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,600,700" rel="stylesheet">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <title>AddUser</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+    <div class="container toparea">
+        <div id="edd_checkout_wrap" class="col-md-8 col-md-offset-2">
+            <div id="edd_checkout_form_wrap" class="edd_clearfix">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
+                    <div class="form-horizontal">
+                        <fieldset id="edd_checkout_user_info" style="margin-top:20%; margin-left:29%; margin-right:26%; font-size:15px; line-height:1.7">
 
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <p>
+                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "edd-label" })
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Surname, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                                @Html.TextBoxFor(model => model.Name, new { @class = "edd-input required", id = "edd-email" })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </p>
+                            <p>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                                @Html.LabelFor(model => model.Surname, htmlAttributes: new { @class = "edd-label" })
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                                @Html.TextBoxFor(model => model.Surname, new { @class = "edd-input required", id = "edd-email" })
+                                @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+                            </p>
+                            <p>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                                @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "edd-label" })
+
+                                @Html.TextBoxFor(model => model.Mail, new { @class = "edd-input required", id = "edd-email" })
+                                @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+                            </p>
+                            <p>
+
+                                @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "edd-label" })
+
+                                @Html.TextBoxFor(model => model.Phone, new { @class = "edd-input required", id = "edd-email" })
+                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                            </p>
+                            <p>
+
+                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "edd-label" })
+
+                                @Html.TextBoxFor(model => model.Password, new { @class = "edd-input required", id = "edd-email" })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </p>
 
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Oluştur" class="btn btn-default" />
-                </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Oluştur" style="margin-left:-23%; margin-top:2%; margin-bottom: -8%" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                }
             </div>
         </div>
-    }
-
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 

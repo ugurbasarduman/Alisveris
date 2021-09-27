@@ -138,6 +138,7 @@
     <Compile Include="Controllers\AdminUsersController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewUserController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -204,8 +205,21 @@
     <Compile Include="Migrations\202109230619249_classchanges.Designer.cs">
       <DependentUpon>202109230619249_classchanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109270611214_contact.cs" />
+    <Compile Include="Migrations\202109270611214_contact.Designer.cs">
+      <DependentUpon>202109270611214_contact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109270620536_contactdb.cs" />
+    <Compile Include="Migrations\202109270620536_contactdb.Designer.cs">
+      <DependentUpon>202109270620536_contactdb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109270638404_contactName.cs" />
+    <Compile Include="Migrations\202109270638404_contactName.Designer.cs">
+      <DependentUpon>202109270638404_contactName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityFramework\Category.cs" />
+    <Compile Include="Models\EntityFramework\Contact.cs" />
     <Compile Include="Models\EntityFramework\Order.cs" />
     <Compile Include="Models\EntityFramework\OrderProduct.cs" />
     <Compile Include="Models\EntityFramework\Product.cs" />
@@ -228,9 +242,47 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="HTML - Scorilo 1.0.1\checkout.html" />
+    <Content Include="HTML - Scorilo 1.0.1\contact - Copy.html" />
+    <Content Include="HTML - Scorilo 1.0.1\contact.html" />
+    <Content Include="HTML - Scorilo 1.0.1\contact.php" />
+    <Content Include="HTML - Scorilo 1.0.1\css\bootstrap-theme.css" />
+    <Content Include="HTML - Scorilo 1.0.1\css\bootstrap-theme.min.css" />
+    <Content Include="HTML - Scorilo 1.0.1\css\bootstrap.css" />
+    <Content Include="HTML - Scorilo 1.0.1\css\bootstrap.min.css" />
+    <Content Include="HTML - Scorilo 1.0.1\css\style.css" />
+    <Content Include="HTML - Scorilo 1.0.1\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="HTML - Scorilo 1.0.1\images\homeimg.jpg" />
+    <Content Include="HTML - Scorilo 1.0.1\images\menu.png" />
+    <Content Include="HTML - Scorilo 1.0.1\images\product1-1.jpg" />
+    <Content Include="HTML - Scorilo 1.0.1\images\product1.jpg" />
+    <Content Include="HTML - Scorilo 1.0.1\images\product2-2.jpg" />
+    <Content Include="HTML - Scorilo 1.0.1\images\product2-3.jpg" />
+    <Content Include="HTML - Scorilo 1.0.1\images\product2.jpg" />
+    <Content Include="HTML - Scorilo 1.0.1\images\product3.png" />
+    <Content Include="HTML - Scorilo 1.0.1\images\scorilo2-70x70.jpg" />
+    <Content Include="HTML - Scorilo 1.0.1\index.html" />
+    <Content Include="HTML - Scorilo 1.0.1\js\anim.js" />
+    <Content Include="HTML - Scorilo 1.0.1\js\bootstrap.js" />
+    <Content Include="HTML - Scorilo 1.0.1\js\bootstrap.min.js" />
+    <Content Include="HTML - Scorilo 1.0.1\js\jquery-.js" />
+    <Content Include="HTML - Scorilo 1.0.1\js\npm.js" />
+    <Content Include="HTML - Scorilo 1.0.1\js\validate.js" />
+    <Content Include="HTML - Scorilo 1.0.1\license.txt" />
+    <Content Include="HTML - Scorilo 1.0.1\product - Copy.html" />
+    <Content Include="HTML - Scorilo 1.0.1\product.html" />
+    <Content Include="HTML - Scorilo 1.0.1\shop.html" />
     <Content Include="Scripts\Cart.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="HTML - Scorilo 1.0.1\css\bootstrap-theme.css.map" />
+    <Content Include="HTML - Scorilo 1.0.1\css\bootstrap-theme.min.css.map" />
+    <Content Include="HTML - Scorilo 1.0.1\css\bootstrap.css.map" />
+    <Content Include="HTML - Scorilo 1.0.1\css\bootstrap.min.css.map" />
+    <Content Include="HTML - Scorilo 1.0.1\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="HTML - Scorilo 1.0.1\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="HTML - Scorilo 1.0.1\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="HTML - Scorilo 1.0.1\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Carts.js" />
     <Content Include="Scripts\Cartss.js" />
@@ -297,6 +349,8 @@
     <Content Include="Views\Profil\AddressList.cshtml" />
     <Content Include="Views\Profil\NewUserAddressProfil.cshtml" />
     <Content Include="Views\Profil\NewUserAddressProfiles.cshtml" />
+    <Content Include="Views\Shared\_Animasyon.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -356,6 +410,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109230619249_classchanges.resx">
       <DependentUpon>202109230619249_classchanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109270611214_contact.resx">
+      <DependentUpon>202109270611214_contact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109270620536_contactdb.resx">
+      <DependentUpon>202109270620536_contactdb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109270638404_contactName.resx">
+      <DependentUpon>202109270638404_contactName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

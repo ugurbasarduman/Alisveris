@@ -5,89 +5,241 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="">
     <title>@ViewBag.Title - Ana Sayfa</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/PagedList.css" rel="stylesheet" />
-    <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/HTML - Scorilo 1.0.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/HTML - Scorilo 1.0.1/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,600,700" rel="stylesheet">
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <header class="item header margin-top-0">
+        <div class="wrapper">
+            <nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
+                @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { style = "padding-left:37%; margin-top:2px", @class = "myClass" }))
+                {
+                    @Html.TextBox("searching", ViewBag.CurrentFilter as string, new { style = "width:51%; margin-left:-6%; margin-right:-5%" })
+                    <button type="submit" value="Ara" class="btn btn-xs">Ara</button>
+                }
+                <div style="float:right; font-size:15px">
+
+                    @if (User.IsInRole("U"))
+                    {
+                        <p style="margin-top:-28px">
+                            <a href="/Cart"><i class="fa fa-shopping-cart"></i> Sepet</a> |
+                            <a href="/Siparislerim">Siparislerim</a> |
+                            <a href="/Profil">Profil</a> |
+                            @Html.ActionLink("Cıkış Yap", "Logout", "Security")
+                        </p>
+                    }
+                    else if (User.IsInRole("A"))
+                    {
+                        <p style="margin-top:-28px">
+                            <a href="/Cart"><i class="fa fa-shopping-cart"></i> Sepet</a> |
+                            <a href="/Siparislerim">Siparislerim</a> |
+                            <a href="/Profil">Profil</a> |
+                            @Html.ActionLink("Cıkış Yap", "Logout", "Security")
+                        </p>
+                    }
+                    else
+                    {
+                        <p style="margin-top:-28px">
+                            @Html.ActionLink("Giris Yap", "Login", "Security") |
+                            <a href="/KayitOl ">Kayit Ol </a>
+                        </p>
+                    }
+                </div>
+                <div class="container">
+                    <div class="navbar-header">
+                        <button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+                            <i class="fa fa-bars"></i>
+                            <span class="sr-only">Toggle navigation</span>
+                        </button>
+                        @Html.ActionLink("DUMAN", "Index", "Home", FormMethod.Post, new { @class = "navbar-brand brand", @style = "margin-top:-30px;" })
+                    </div>
+                    <div id="navbar-collapse-02" class="collapse navbar-collapse">
+
+                        <ul class="nav navbar-nav navbar-right" @*style="margin-top:-53px"*@>
+                            @Html.Action("Menu", "Home")
+
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="text-pageheader">
+                            <div class="subtext-image" data-scrollreveal="enter bottom over 1.7s after 0.1s">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*//Container gelmeli ama nasil gelecek*@
+        </div>
+
+    </header>
+
+   
+
+    <section class="item content">
+        <div class="container toparea">
+            <br />
+            @if (User.IsInRole("A"))
+            {
+                <div class="container">
+                    @Html.ActionLink("Admin Paneli", "Index", "AdminProducts")
+                </div>
+            }
+            @RenderBody()
+        </div>
+    </section>
+
+    <div class="footer text-center">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Ana Sayfa", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <div class="row">
+                <div class="col-6" style="font-size:17px">
+                    İletişim İçin 0999 999 99 99@*Connect with Scorilo*@
+                </div>
+                <div class="col-6">
+                    <ul class="social-iconsfooter">
+                        <li><a href="https://tr-tr.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.youtube.com"><i class="fa fa-youtube"></i></a></li>
+                        <li><a href="/Contact"><i class="fa fa-phone-square" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+                <p>
+                    &copy; 2021 Duman<br />
+                    
+                </p>
             </div>
-            <div class="navbar-collapse collapse" style="float:left">
-                <ul class="nav navbar-nav">
-                    @Html.Action("Menu", "Home")
-                </ul>
-            </div>
-
-            <div style="color:white; float:right">
-
-                @if (User.IsInRole("U"))
-                {
-                    <p>
-                        <a href="/Profil">@HttpContext.Current.User.Identity.Name</a> |
-                        <a href="/Cart">Sepetim</a> |
-                        <a href="/Siparislerim">Siparislerim</a> |
-                        @Html.ActionLink("Cıkış Yap", "Logout", "Security")
-                    </p>
-                }
-                else if (User.IsInRole("A"))
-                {
-                    <p>
-                        <a href="/Profil">@HttpContext.Current.User.Identity.Name</a> |
-                        <a href="/Cart">Sepetim</a>
-                        <a href="/Siparislerim">Siparislerim</a> |
-                        @Html.ActionLink("Cıkış Yap", "Logout", "Security")
-                    </p>
-                }
-                else
-                {
-                    <p>
-                        @Html.ActionLink("Giris Yap", "Login", "Security") |
-                        <a href="/KayitOl">Kayit Ol</a>
-                    </p>
-                }
-            </div>
-
         </div>
     </div>
-    <div class="container">
-        <br />
-        @if (User.IsInRole("A"))
-        {
-            <div class="container">
-                @Html.ActionLink("Admin Paneli", "Index", "AdminProducts")
-            </div>
-        }
-        @RenderBody()
-    </div>
-
-
-
 
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/Cart.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @*<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @*SInir*@
+    <script src="~/HTML - Scorilo 1.0.1/js/jquery-.js"></script>
+    <script src="~/HTML - Scorilo 1.0.1/js/bootstrap.min.js"></script>
+    <script src="~/HTML - Scorilo 1.0.1/js/anim.js"></script>
+    <script>
+        //----HOVER CAPTION---//
+        jQuery(document).ready(function ($) {
+            $('.fadeshop').hover(
+                function () {
+                    $(this).find('.captionshop').fadeIn(150);
+                },
+                function () {
+                    $(this).find('.captionshop').fadeOut(150);
+                }
+            );
+        });
+    </script>
     @Scripts.Render("Cart.js")
     @RenderSection("scripts", required: false)
-
-
-
 </body>
 </html>
+
+
+
+@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - Ana Sayfa</title>
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/PagedList.css" rel="stylesheet" />
+        <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Ana Sayfa", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse" style="float:left">
+                    <ul class="nav navbar-nav">
+                        @Html.Action("Menu", "Home")
+                    </ul>
+                </div>
+
+                <div style="color:white; float:right">
+
+                    @if (User.IsInRole("U"))
+                    {
+                        <p>
+                            <a href="/Profil">@HttpContext.Current.User.Identity.Name</a> |
+                            <a href="/Cart">Sepetim</a> |
+                            <a href="/Siparislerim">Siparislerim</a> |
+                            @Html.ActionLink("Cıkış Yap", "Logout", "Security")
+                        </p>
+                    }
+                    else if (User.IsInRole("A"))
+                    {
+                        <p>
+                            <a href="/Profil">@HttpContext.Current.User.Identity.Name</a> |
+                            <a href="/Cart">Sepetim</a>
+                            <a href="/Siparislerim">Siparislerim</a> |
+                            @Html.ActionLink("Cıkış Yap", "Logout", "Security")
+                        </p>
+                    }
+                    else
+                    {
+                        <p>
+                            @Html.ActionLink("Giris Yap", "Login", "Security") |
+                            <a href="/KayitOl">Kayit Ol</a>
+                        </p>
+                    }
+                </div>
+
+            </div>
+        </div>
+        <div class="container">
+            <br />
+            @if (User.IsInRole("A"))
+            {
+                <div class="container">
+                    @Html.ActionLink("Admin Paneli", "Index", "AdminProducts")
+                </div>
+            }
+            @RenderBody()
+        </div>
+
+
+
+
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="~/Scripts/Cart.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("Cart.js")
+        @RenderSection("scripts", required: false)
+
+
+
+    </body>
+    </html>*@

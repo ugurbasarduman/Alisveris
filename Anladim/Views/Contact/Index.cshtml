@@ -1,0 +1,67 @@
+﻿@model Anladim.Models.EntityFramework.Contact
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="underlined-title">
+    <div class="editContent">
+        <h1 class="text-center latestitems">İletişim</h1>
+    </div>
+    <div class="wow-hr type_short">
+        <span class="wow-hr-h">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+        </span>
+    </div>
+</div>
+<div class="row">
+
+
+    @ViewBag.Mesaj
+    @*@using (Ajax.BeginForm("Index", "Contact", new AjaxOptions { HttpMethod = "POST"}, new { id = "contactform" }))*@
+    @using (Html.BeginForm("Index","Contact",FormMethod.Post,new {id="contactform" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div>
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(x => x.Name, new { placeholder = "İsminiz" })
+
+
+            @Html.ValidationMessageFor(x => x.Mail, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(x => x.Mail, new { placeholder = "Mail Adresiniz" })
+
+
+            @Html.ValidationMessageFor(x => x.Subject, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(x => x.Subject, new { placeholder = "Konu" })
+
+
+            @Html.ValidationMessageFor(x => x.Message, "", new { @class = "text-danger" })
+            @Html.TextAreaFor(x => x.Message, new { rows = 7, placeholder = "Mesaj" })
+
+        </div>
+
+
+        <input type="submit" id="submit" class="clearfix btn" value="GÖNDER">
+    }
+
+
+    @*<form method="post" action="contact.php" id="contactform">
+            <div class="form">
+                <input type="text" name="name" placeholder="Your Name *">
+                <input type="text" name="email" placeholder="Your E-mail Address *">
+                <textarea name="comment" rows="7" placeholder="Type your Message *"></textarea>
+                <input type="submit" id="submit" class="clearfix btn" value="Send">
+            </div>
+        </form>*@
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}
