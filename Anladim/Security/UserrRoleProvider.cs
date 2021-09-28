@@ -7,7 +7,7 @@ using System.Web.Security;
 
 namespace Anladim.Security
 {
-    public class UserRoleProvider : RoleProvider
+    public class UserrRoleProvider : RoleProvider
     {
         public override string ApplicationName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 

@@ -233,7 +233,7 @@
     <Compile Include="Models\EntityFramework\User.cs" />
     <Compile Include="Models\EntityFramework\UserAddress.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Security\UserRoleProvider.cs" />
+    <Compile Include="Security\UserrRoleProvider.cs" />
     <Compile Include="ViewModels\Cart.cs" />
     <Compile Include="ViewModels\ProfilFormViewModel.cs" />
   </ItemGroup>
