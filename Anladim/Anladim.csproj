@@ -133,6 +133,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminCategoriesController.cs" />
+    <Compile Include="Controllers\AdminContactController.cs" />
     <Compile Include="Controllers\AdminOrdersController.cs" />
     <Compile Include="Controllers\AdminProductsController.cs" />
     <Compile Include="Controllers\AdminUsersController.cs" />
@@ -343,7 +344,6 @@
     <Content Include="Views\Order\Detail.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
-    <Content Include="Views\Cart\IndexDeneme.cshtml" />
     <Content Include="Views\Profil\Index.cshtml" />
     <Content Include="Views\Profil\ProfilForm.cshtml" />
     <Content Include="Views\Profil\AddressList.cshtml" />
@@ -351,6 +351,11 @@
     <Content Include="Views\Profil\NewUserAddressProfiles.cshtml" />
     <Content Include="Views\Shared\_Animasyon.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\AdminContact.cshtml" />
+    <Content Include="Views\AdminContact\Create.cshtml" />
+    <Content Include="Views\AdminContact\Delete.cshtml" />
+    <Content Include="Views\AdminContact\Details.cshtml" />
+    <Content Include="Views\AdminContact\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
