@@ -35,5 +35,7 @@ namespace Anladim.Models.EntityFramework
         public string Password { get; set; }
         public virtual IEnumerable<UserAddress> UserAddresses { get; set; }
         public string Role { get; set; }  ="U"; //Duzenlenecek
+        //public bool IsEmailVerified { get; set; }
+        //public virtual string ConfirmPassword { get; set; }
     }
 }
