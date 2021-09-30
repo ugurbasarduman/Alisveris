@@ -17,8 +17,13 @@ namespace Anladim.Controllers
         private Context db = new Context();
 
         // GET: AdminProducts
-        public ActionResult Index(string searching)
+        public ActionResult Index(string searching, string mail)
         {
+            mail = (string)Session["LoginUserMail"];
+            if (mail == null)
+            {
+                return RedirectToAction("Logout", "Security");
+            }
             var products = db.Products.Include(p => p.Category);
             var arama = from x in products select x;
             if (!string.IsNullOrEmpty(searching))

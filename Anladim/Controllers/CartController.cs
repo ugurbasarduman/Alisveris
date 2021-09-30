@@ -27,13 +27,13 @@ namespace Anladim.Controllers
             var model = db.Orders.Where(x => x.UserId == loginUserId).OrderByDescending(x => x.OrderDate).ToList();
             return View(model);
         }
-
-        private int IsExistingCheck(int? id)
+        [NonAction]
+        private int IsExist(int? id)
         {
-            List<Cart> lsCart = (List<Cart>)Session[strCart];
-            for (int i = 0; i < lsCart.Count; i++)
+            List<Cart> cart = (List<Cart>)Session[strCart];
+            for (int i = 0; i < cart.Count; i++)
             {
-                if (lsCart[i].Product.ProductId == id)
+                if (cart[i].Product.ProductId == id)
                     return i;
             }
             return -1;
@@ -54,25 +54,26 @@ namespace Anladim.Controllers
             }
             if (Session[strCart] == null)
             {
-                List<Cart> lsCart = new List<Cart>() {
+                List<Cart> cart = new List<Cart>() {
                     new Cart(db.Products.Find(id),1)
                 };
-                Session[strCart] = lsCart;
+                Session[strCart] = cart;
             }
             else
             {
-                List<Cart> lsCart = (List<Cart>)Session[strCart];
-                int check = IsExistingCheck(id);
+                List<Cart> cart = (List<Cart>)Session[strCart];
+                int check = IsExist(id);
                 if (check == -1)
                 {
-                    lsCart.Add(new Cart(db.Products.Find(id), 1));
+                    cart.Add(new Cart(db.Products.Find(id), 1));
                 }
                 else
                 {
-                    lsCart[check].Quantity++;
+                    cart[check].Quantity++;
                 }
-                Session[strCart] = lsCart;
+                Session[strCart] = cart;
             }
+            
             return View("Index",model);
         }
 
@@ -82,22 +83,22 @@ namespace Anladim.Controllers
             {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
             }
-            int check = IsExistingCheck(id);
-            List<Cart> lsCart = (List<Cart>)Session[strCart];
-            lsCart.RemoveAt(check);
+            int check = IsExist(id);
+            List<Cart> cart = (List<Cart>)Session[strCart];
+            cart.RemoveAt(check);
             return View("Index");
         }
 
         public ActionResult UpdateCart(FormCollection form)
         {
             string[] quantities = form.GetValues("quantity");
-            List<Cart> lsCart = (List<Cart>)Session[strCart];
-            for(int i = 0; i<lsCart.Count; i++)
+            List<Cart> cart = (List<Cart>)Session[strCart];
+            for(int i = 0; i<cart.Count; i++)
             {              
-                lsCart[i].Quantity = Convert.ToInt32(quantities[i]);
+                cart[i].Quantity = Convert.ToInt32(quantities[i]);
             }
             
-            Session[strCart] = lsCart;
+            Session[strCart] = cart;
             return View("Index");
         }
 

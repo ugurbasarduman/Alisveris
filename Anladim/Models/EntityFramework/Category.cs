@@ -13,6 +13,7 @@ namespace Anladim.Models.EntityFramework
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CategoryId { get; set; }
         [Required]
+        [Display(Name = "Kategori Adi")]
         public string CategoryName { get; set; }
         public virtual ICollection<Product> Product { get; set; }
     }

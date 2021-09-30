@@ -11,13 +11,19 @@ using Anladim.Models.EntityFramework;
 
 namespace Anladim.Controllers
 {
+    [Authorize(Roles = "A")]
     public class AdminContactController : Controller
     {
         private Context db = new Context();
 
         // GET: AdminContact
-        public ActionResult Index()
+        public ActionResult Index(string mail)
         {
+            mail = (string)Session["LoginUserMail"];
+            if (mail == null)
+            {
+                return RedirectToAction("Logout", "Security");
+            }
             return View(db.Contacts.ToList());
         }
 

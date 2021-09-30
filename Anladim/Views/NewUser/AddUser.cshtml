@@ -67,6 +67,12 @@
                                 @Html.TextBoxFor(model => model.Password, new { @class = "edd-input required", id = "edd-email" })
                                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                             </p>
+                            <p>
+                                @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "edd-label" })
+
+                                @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "edd-input required", id = "edd-email" })
+                                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                            </p>
 
 
                             <div class="form-group">

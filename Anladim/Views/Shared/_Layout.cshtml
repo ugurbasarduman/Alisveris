@@ -19,11 +19,14 @@
     <header class="item header margin-top-0">
         <div class="wrapper">
             <nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
-                @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { style = "padding-left:37%; margin-top:2px", @class = "myClass" }))
-                {
-                    @Html.TextBox("searching", ViewBag.CurrentFilter as string, new { style = "width:51%; margin-left:-6%; margin-right:-5%" })
-                    <button type="submit" value="Ara" class="btn btn-xs">Ara</button>
-                }
+                <div style="display:flex; justify-content:center">
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { style = "margin-top:2px", @class = "myClass" }))
+                    {<p>
+                            @Html.TextBox("searching", ViewBag.CurrentFilter as string, new { style = "width:450px" })
+                            <button type="submit" value="Ara" class="btn btn-xs">Ara</button>
+                        </p>
+                    }
+                </div>
                 <div style="float:right; font-size:15px">
 
                     @if (User.IsInRole("U"))
@@ -52,42 +55,25 @@
                         </p>
                     }
                 </div>
-                <div class="container">
-                    <div class="navbar-header">
-                        <button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
-                            <i class="fa fa-bars"></i>
-                            <span class="sr-only">Toggle navigation</span>
-                        </button>
-                        @Html.ActionLink("DUMAN", "Index", "Home", FormMethod.Post, new { @class = "navbar-brand brand", @style = "margin-top:-30px;" })
-                    </div>
-                    <div id="navbar-collapse-02" class="collapse navbar-collapse">
-
-                        <ul class="nav navbar-nav navbar-right" @*style="margin-top:-53px"*@>
-                            @Html.Action("Menu", "Home")
-
-                        </ul>
-                    </div>
-
+                <div class="navbar-header">
+                    <button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+                        <i class="fa fa-bars"></i>
+                        <span class="sr-only">Toggle navigation</span>
+                    </button>
+                    @Html.ActionLink("DUMAN", "Index", "Home", FormMethod.Post, new { @class = "navbar-brand brand", @style = "margin-top:-30px;" })
                 </div>
-            </nav>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <div class="text-pageheader">
-                            <div class="subtext-image" data-scrollreveal="enter bottom over 1.7s after 0.1s">
-
-                            </div>
+               <div class="container">
+                        <div id="navbar-collapse-02" class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                @Html.Action("Menu", "Home")
+                            </ul>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            @*//Container gelmeli ama nasil gelecek*@
+            </nav>
         </div>
-
     </header>
 
-   
+
 
     <section class="item content">
         <div class="container toparea">
@@ -118,7 +104,7 @@
                 </div>
                 <p>
                     &copy; 2021 Duman<br />
-                    
+
                 </p>
             </div>
         </div>

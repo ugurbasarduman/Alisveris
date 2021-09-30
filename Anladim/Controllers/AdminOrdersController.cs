@@ -17,8 +17,13 @@ namespace Anladim.Controllers
         private Context db = new Context();
 
         // GET: AdminOrders
-        public ActionResult Index(string searching)
+        public ActionResult Index(string searching, string mail)
         {
+            mail = (string)Session["LoginUserMail"];
+            if (mail == null)
+            {
+                return RedirectToAction("Logout", "Security");
+            }
             var orders = db.Orders.Include(o => o.User).Include(o => o.UserAddress);
             var arama = from x in orders select x;
             if (!string.IsNullOrEmpty(searching))

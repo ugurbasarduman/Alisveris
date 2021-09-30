@@ -21,7 +21,7 @@
 
     @ViewBag.Mesaj
     @*@using (Ajax.BeginForm("Index", "Contact", new AjaxOptions { HttpMethod = "POST"}, new { id = "contactform" }))*@
-    @using (Html.BeginForm("Index","Contact",FormMethod.Post,new {id="contactform" }))
+    @using (Html.BeginForm("Index", "Contact", FormMethod.Post, new { id = "contactform" }))
     {
         @Html.AntiForgeryToken()
 
@@ -47,17 +47,17 @@
 
         <input type="submit" id="submit" class="clearfix btn" value="GÖNDER">
     }
-
-
-    @*<form method="post" action="contact.php" id="contactform">
-            <div class="form">
-                <input type="text" name="name" placeholder="Your Name *">
-                <input type="text" name="email" placeholder="Your E-mail Address *">
-                <textarea name="comment" rows="7" placeholder="Type your Message *"></textarea>
-                <input type="submit" id="submit" class="clearfix btn" value="Send">
-            </div>
-        </form>*@
 </div>
+
+@*<form method="post" action="Index" id="contactform">
+    <div class="form">
+        <input type="text" name="name" placeholder="Adınız*">
+        <input type="text" name="mail" placeholder="Mail Adresiniz*">
+        <input type="text" name="subject" placeholder="Konu*">
+        <textarea name="comment" rows="7" placeholder="Mesajınız*"></textarea>
+        <input type="submit" id="submit" class="clearfix btn" value="GÖNDER">
+    </div>
+</form>*@
 
 
 @section scripts{

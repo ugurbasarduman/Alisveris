@@ -36,10 +36,10 @@ namespace Anladim.Security
             throw new NotImplementedException();
         }
 
-        public override string[] GetRolesForUser(string username)
+        public override string[] GetRolesForUser(string mail)
         {
             Context db = new Context();
-            var model = db.Users.FirstOrDefault(x => x.Mail == username);
+            var model = db.Users.FirstOrDefault(x => x.Mail == mail);
             return new string[] { model.Role };
 
         }

@@ -1,4 +1,76 @@
-﻿@{
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="">
+    <title>@ViewBag.Title - Ana Sayfa</title>
+    <link href="~/HTML - Scorilo 1.0.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/HTML - Scorilo 1.0.1/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,600,700" rel="stylesheet">
+</head>
+<body>
+    <header class="item header margin-top-0">
+        <div class="wrapper">
+            <nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+                            <i class="fa fa-bars"></i>
+                            <span class="sr-only">Toggle navigation</span>
+                        </button>
+                    </div>
+                    <div style="display:flex; justify-content:center">
+
+                        <ul class="nav navbar-nav" @*style="margin-top:-53px"*@>
+                            <li class="propClone"><a href="/AdminCategories/Index">Kategori Yonetimi</a></li>
+                            <li class="propClone"><a href="/AdminUsers/Index">Kullanici Yonetimi</a></li>
+                            <li class="propClone"><a href="/AdminProducts/Index">Urun Yonetimi</a></li>
+                            <li class="propClone"><a href="/AdminOrders/Index">Siparis Yonetimi</a></li>
+                            <li class="propClone"><a href="/AdminContact/Index">İletişim</a></li>
+                            <li class="propClone"><a href="/">Siteye Dön</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+
+    </header>
+
+
+
+    <section class="item content" style="margin-top:80px">
+        <div class="container toparea">
+            <br />
+            @RenderBody()
+        </div>
+    </section>
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    @*<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    @*SInir*@
+    <script src="~/HTML - Scorilo 1.0.1/js/jquery-.js"></script>
+    <script src="~/HTML - Scorilo 1.0.1/js/bootstrap.min.js"></script>
+    <script src="~/HTML - Scorilo 1.0.1/js/anim.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+
+@*@{
     Layout = null;
 }
 
@@ -26,5 +98,4 @@
     @RenderSection("scripts", required: false)
 
 </body>
-</html>
-
+</html>*@

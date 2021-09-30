@@ -15,7 +15,7 @@
 }
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Oluştur", "Create")
 </p>
 <table class="table">
     <tr>
@@ -56,9 +56,9 @@
                 @Html.DisplayFor(modelItem => item.TotalPrice)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.OrderId }) |
+                @Html.ActionLink("Detaylar", "Details", new { id = item.OrderId }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.OrderId })
             </td>
         </tr>
     }

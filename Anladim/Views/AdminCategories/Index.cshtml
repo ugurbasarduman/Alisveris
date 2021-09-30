@@ -16,7 +16,7 @@
 }
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Yeni Kategorı Oluştur", "Create")
 </p>
 <table class="table">
     <tr>
@@ -33,9 +33,8 @@
                 @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CategoryId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.CategoryId }) |
+                @Html.ActionLink("Sıl", "Delete", new { id = item.CategoryId })
             </td>
         </tr>
     }

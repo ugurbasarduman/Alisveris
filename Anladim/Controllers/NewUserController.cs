@@ -1,8 +1,11 @@
 ﻿using Anladim.Data;
 using Anladim.Models.EntityFramework;
+using Anladim.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,6 +15,7 @@ namespace Anladim.Controllers
     {
         // GET: NewUser
         Context db = new Context();
+
         [HttpGet]
         [Route("KayitOl")]
         public ActionResult AddUser()
@@ -31,7 +35,6 @@ namespace Anladim.Controllers
             else {
                 return View();
             }
-
         }
     }
 }

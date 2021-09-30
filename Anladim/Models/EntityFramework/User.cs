@@ -34,8 +34,6 @@ namespace Anladim.Models.EntityFramework
         [StringLength(70, MinimumLength = 6, ErrorMessage = "En az 6 karakter uzunlugunda olmali")]
         public string Password { get; set; }
         public virtual IEnumerable<UserAddress> UserAddresses { get; set; }
-        public string Role { get; set; }  ="U"; //Duzenlenecek
-        //public bool IsEmailVerified { get; set; }
-        //public virtual string ConfirmPassword { get; set; }
+        public string Role { get; set; }  ="U";
     }
 }

@@ -15,16 +15,13 @@ namespace Anladim.Controllers
     public class HomeController : Controller
     {
         Context db = new Context();
-
-        //public ActionResult Index(string searching, int? sayfano, string sortOrder)
-
         public ActionResult Index(string sortOrder, string currentFilter, string searching, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.DescSortParm = String.IsNullOrEmpty(sortOrder) ? "desc" : "";
             ViewBag.AscSortParm = String.IsNullOrEmpty(sortOrder) ? "asc" : "";
             var model = db.Products.Include(x => x.Category).ToList();
-            //int _sayfano = sayfano ?? 1;
+
             if (searching != null)
             {
                 page = 1;

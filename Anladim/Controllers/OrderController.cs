@@ -42,25 +42,26 @@ namespace Anladim.Controllers
         [Route("NewOrder/{id}")]
         public ActionResult NewOrder(int id, string mail)
         {
-            List<Cart> lstCart = (List<Cart>)Session["Cart"];
+            List<Cart> cart = (List<Cart>)Session["Cart"];
             mail = (string)Session["LoginUserMail"];
             var loginUserId = db.Users.Where(x => x.Mail == mail).Select(y => y.UserId).FirstOrDefault();
             Order order = new Order();
             order.UserId = loginUserId;
             order.OrderDate = DateTime.Now;
             order.UserAddressId = id;
-            order.TotalPrice = lstCart.Sum(x => x.Product.Price * x.Quantity);
+            order.TotalPrice = cart.Sum(x => x.Product.Price * x.Quantity);
             order.OrderProducts = new List<OrderProduct>();
             db.Orders.Add(order);
+            cart.Clear();
             db.SaveChanges();
 
-            foreach (Cart cart in lstCart)
+            foreach (Cart item in cart)
             {
                 order.OrderProducts.Add(new OrderProduct
                 {
-                    Quantity = cart.Quantity,
-                    ProductId = cart.Product.ProductId,
-                    Price = cart.Product.Price
+                    Quantity = item.Quantity,
+                    ProductId = item.Product.ProductId,
+                    Price = item.Product.Price
                 });
 
                 db.SaveChanges();

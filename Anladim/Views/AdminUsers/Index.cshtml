@@ -16,7 +16,7 @@
 }
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Yeni Kullanici Oluştur", "Create")
 </p>
 <table class="table">
     <tr>
@@ -57,9 +57,9 @@
                 @Html.DisplayFor(modelItem => item.Password)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.UserId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.UserId }) |
+                @Html.ActionLink("Detaylar", "Details", new { id = item.UserId }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.UserId })
             </td>
         </tr>
     }
