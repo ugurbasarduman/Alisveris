@@ -7,13 +7,13 @@ namespace Anladim.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class nullable : IMigrationMetadata
+    public sealed partial class addressrules : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(nullable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addressrules));
         
         string IMigrationMetadata.Id
         {
-            get { return "202109281251553_nullable"; }
+            get { return "202110011142054_addressrules"; }
         }
         
         string IMigrationMetadata.Source

@@ -225,13 +225,9 @@
     <Compile Include="Migrations\202109270638404_contactName.Designer.cs">
       <DependentUpon>202109270638404_contactName.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202109281159172_logindeneme.cs" />
-    <Compile Include="Migrations\202109281159172_logindeneme.Designer.cs">
-      <DependentUpon>202109281159172_logindeneme.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109281251553_nullable.cs" />
-    <Compile Include="Migrations\202109281251553_nullable.Designer.cs">
-      <DependentUpon>202109281251553_nullable.cs</DependentUpon>
+    <Compile Include="Migrations\202110011142054_addressrules.cs" />
+    <Compile Include="Migrations\202110011142054_addressrules.Designer.cs">
+      <DependentUpon>202110011142054_addressrules.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityFramework\Category.cs" />
@@ -673,11 +669,8 @@
     <EmbeddedResource Include="Migrations\202109270638404_contactName.resx">
       <DependentUpon>202109270638404_contactName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109281159172_logindeneme.resx">
-      <DependentUpon>202109281159172_logindeneme.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109281251553_nullable.resx">
-      <DependentUpon>202109281251553_nullable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110011142054_addressrules.resx">
+      <DependentUpon>202110011142054_addressrules.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

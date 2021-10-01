@@ -66,7 +66,7 @@
                             @item.Description
                         </p>
                         <p>
-                            <a href="@Url.Action("OrderNow", "Cart", new { id = item.ProductId })" class="learn-more detailslearn"><i class="fa fa-shopping-cart"></i> Satın Al</a>
+                            <a href="@Url.Action("AddToCart", "Cart", new { id = item.ProductId })" class="learn-more detailslearn"><i class="fa fa-shopping-cart"></i> Satın Al</a>
                             <a href="@Url.Action("Details", "Product", new { id = item.ProductId })" class="learn-more detailslearn"><i class="fa fa-link"></i> Detaylar</a>
                         </p>
                     </div>

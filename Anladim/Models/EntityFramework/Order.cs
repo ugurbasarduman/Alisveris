@@ -18,8 +18,7 @@ namespace Anladim.Models.EntityFramework
         public int UserAddressId { get; set; }
         public UserAddress UserAddress { get; set; }
         public DateTime OrderDate { get; set; }
-        //public int StatusId { get; set; }
-        //public Status Status { get; set; }
+
         [Range(1, 99999999999.99)]
         public decimal TotalPrice { get; set; }
         public virtual List<OrderProduct> OrderProducts { get; set; }

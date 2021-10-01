@@ -39,7 +39,7 @@ namespace Anladim.Controllers
             return -1;
         }
 
-        public ActionResult OrderNow(int? id, string mail)
+        public ActionResult AddToCart(int? id, string mail)
         {
             mail = (string)Session["LoginUserMail"];
             if (mail == null)

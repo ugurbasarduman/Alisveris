@@ -15,13 +15,16 @@ namespace Anladim.Models.EntityFramework
         public int? UserId { get; set; }
         public User User { get; set; }
         [Display(Name = "Başlık")]
-        [Required]
+        [StringLength(70, MinimumLength = 2, ErrorMessage = "En az 2 karakter uzunlugunda olmali")]
+        [Required(ErrorMessage = "Bos Birakilamaz")]
         public string Title { get; set; }
         [Display(Name = "Şehir")]
-        [Required]
+        [StringLength(70, MinimumLength = 2, ErrorMessage = "En az 2 karakter uzunlugunda olmali")]
+        [Required(ErrorMessage = "Bos Birakilamaz")]
         public string City { get; set; }
         [Display(Name = "Adres")]
-        [Required]
+        [StringLength(700, MinimumLength = 2, ErrorMessage = "En az 2 karakter uzunlugunda olmali")]
+        [Required(ErrorMessage = "Bos Birakilamaz")]
         public string Address { get; set; }
     }
 }

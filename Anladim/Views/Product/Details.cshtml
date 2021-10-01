@@ -32,7 +32,7 @@
         </div>
     </div>
     <div class="col-md-4">
-        <a href="@Url.Action("OrderNow","Cart", new {id=Model.ProductId })" class="btn btn-buynow">@Model.Price TL - Purchase</a>
+        <a href="@Url.Action("AddToCart","Cart", new {id=Model.ProductId })" class="btn btn-buynow">@Model.Price TL - Purchase</a>
         <div class="properties-box">
             <ul class="unstyle">
                 <li><b class="propertyname">İsim:</b>@Model.Name</li>

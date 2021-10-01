@@ -13,11 +13,11 @@ namespace Anladim.Models.EntityFramework
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         [Display(Name = "Isminiz")]
-        [Required]
+        [Required(ErrorMessage = "Bos Birakilamaz")]
         [StringLength(70, MinimumLength = 2, ErrorMessage = "En az 2 karakter uzunlugunda olmali")]
         public string Name { get; set; }
         [Display(Name = "Soy Adınız")]
-        [Required]
+        [Required(ErrorMessage ="Bos Birakilamaz")]
         [StringLength(70, MinimumLength = 2, ErrorMessage = "En az 2 karakter uzunlugunda olmali")]
         public string Surname { get; set; }
         [Display(Name = "Email adresiniz")]
