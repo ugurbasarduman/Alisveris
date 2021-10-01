@@ -5,7 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<br />
+<br />
+<br />
+<br />
+<br />
 
 <h4>
     @Html.ActionLink("Yeni Adres Oluştur", "NewUserAddressProfiles", "Profil")
@@ -24,23 +28,24 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.ActionLink("Düzenle", "AddressEdit", new { id=item.UserAddressId }) |
-            @Html.ActionLink("Sil", "AddressDelete", new { id=item.UserAddressId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "AddressEdit", new { id = item.UserAddressId }) |
+                @Html.ActionLink("Sil", "AddressDelete", new { id = item.UserAddressId })
+            </td>
+        </tr>
+    }
 
 </table>
 <div id="edd_checkout_form_wrap" class="edd_clearfix">

@@ -40,37 +40,3 @@ namespace Anladim.Controllers
         }
     }
 }
-
-//try
- //{
- //    if (ModelState.IsValid)
- //    {
- //        var senderEmail = new MailAddress(user.Mail);
- //        var receiverEmail = new MailAddress("ugurbasarduman@gmail.com", "Receiver");
- //        var password = "Your Email Password here";
- //        var sub = subject;
- //        var body = message;
- //        var smtp = new SmtpClient
- //        {
- //            Host = "smtp.gmail.com",
- //            Port = 587,
- //            EnableSsl = true,
- //            DeliveryMethod = SmtpDeliveryMethod.Network,
- //            UseDefaultCredentials = false,
- //            Credentials = new NetworkCredential(senderEmail.Address, password)
- //        };
- //        using (var mess = new MailMessage(senderEmail, receiverEmail)
- //        {
- //            Subject = subject,
- //            Body = body
- //        })
- //        {
- //            smtp.Send(mess);
- //        }
- //        return View();
- //    }
- //}
- //catch (Exception)
- //{
- //    ViewBag.Error = "Some Error";
- //}

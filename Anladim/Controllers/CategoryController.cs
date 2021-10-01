@@ -14,20 +14,6 @@ namespace Anladim.Controllers
     {
         Context db = new Context();
 
-        //[Route("Kategori/{isim}/{id}")]
-        //public ActionResult Index(int id, string searching, int? sayfano)
-        //{
-        //    var model = db.Products.Where(x => x.CategoryId == id).ToList();
-        //    int _sayfano = sayfano ?? 1;
-        //    var arama = from x in model select x;
-        //    if (!string.IsNullOrEmpty(searching))
-        //    {
-        //        arama = arama.Where(x => x.Name.Contains(searching));
-        //    }
-        //    var al = arama.OrderByDescending(x => x.ProductId).ToPagedList(_sayfano, 12); ;
-        //    ViewBag.Cat = db.Categories.FirstOrDefault(x => x.CategoryId == id);
-        //    return View(al);
-        //}
         [Route("Kategori/{isim}/{id}")]
         public ActionResult Index(string sortOrder, string currentFilter, string searching, int? page, int id)
         {
@@ -66,6 +52,24 @@ namespace Anladim.Controllers
             int pageNumber = (page ?? 1);
             return View(al.ToPagedList(pageNumber, pageSize));
             //return View(al.ToPagedList<Product>(_sayfano, 12));
+        }
+        [Route("Kategori/{isim}/{id}/FilterPrice")]
+        public ActionResult FilterPrice(decimal? minPrice, decimal? maxPrice, int? page, int? id)
+        {
+            ViewBag.Cat = db.Categories.FirstOrDefault(x => x.CategoryId == id);
+            if (minPrice == null)
+                minPrice = decimal.Zero;
+            if (maxPrice == null)
+                maxPrice = maxPrice.GetValueOrDefault(decimal.One);
+            if (maxPrice < minPrice)
+                maxPrice = minPrice.GetValueOrDefault(decimal.One);
+            ViewBag.Min = minPrice;
+            ViewBag.Max = maxPrice;
+            int pageSize = 12;
+            int pageNumber = (page ?? 1);;
+            var data = db.Products.Where(x => x.CategoryId == id).ToList();
+            var model = data.Where(x => x.Price >= minPrice && x.Price <= maxPrice).OrderByDescending(x => x.Price).ToPagedList(pageNumber, pageSize);
+            return View("Index", model);
         }
     }
 }

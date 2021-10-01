@@ -61,27 +61,21 @@ namespace Anladim.Controllers
             return PartialView(model);
         }
 
-        //public ActionResult Index(string searching)
-        //{
-        //    var arama = from x in db.Products select x;
-        //       if(!string.IsNullOrEmpty(searching))
-        //        {
-        //            arama = arama.Where(x => x.Name.Contains(searching));
-        //        }
-        //    var al = arama.ToList();
-        //    return View(al);
-        //}
-
-        //[Route("Index")]
-        //public ActionResult GetAll(string searching)
-        //{
-        //    var arama = from x in db.Products select x;
-        //    if(!string.IsNullOrEmpty(searching))
-        //    {
-        //        arama = arama.Where(x => x.Name.Contains(searching));
-        //    }
-        //    return View(arama.ToList());
-        //}
-
+        public ActionResult FilterPrice(decimal? minPrice, decimal? maxPrice, int? page)
+        {
+            if (minPrice == null)
+                minPrice = decimal.Zero;
+            if (maxPrice == null)
+                maxPrice = maxPrice.GetValueOrDefault(decimal.MaxValue);
+            if (maxPrice < minPrice)
+                maxPrice = minPrice.GetValueOrDefault(decimal.One);
+            ViewBag.Min = minPrice;
+            ViewBag.Max = maxPrice;
+            int pageSize = 12;
+            int pageNumber = (page ?? 1);
+            var data = db.Products.Include(x => x.Category).ToList();
+            var model = data.Where(x => x.Price >= minPrice && x.Price <= maxPrice).OrderByDescending(x=>x.Price).ToPagedList(pageNumber,pageSize);
+            return View("Index",model);
+        }
     }
 }

@@ -7,6 +7,8 @@
     var cat = (Anladim.Models.EntityFramework.Category)ViewBag.Cat;
     ViewBag.AscSortParm = "asc";
     ViewBag.DescSortParm = "desc";
+    ViewBag.Min = "minprice";
+    ViewBag.Max = "maxprice";
 }
 
 <div class="underlined-title">
@@ -43,6 +45,13 @@
             </div>
         }
     </div>
+    @using (Html.BeginForm("FilterPrice", "Category", FormMethod.Get))
+    {
+        <div>
+            <input type="number" name="minprice" placeholder="Min TL" />
+            <input type="number" name="maxprice" placeholder="Max TL" />
+            <button type="submit">Ok</button>
+        </div>}
 </div>
 
 <div class="row">

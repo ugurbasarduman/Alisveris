@@ -48,10 +48,10 @@
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td>
-                @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Onayla
-        </button>*@
-                @*<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        </button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -64,13 +64,13 @@
                     Siparişi Onaylamak İstediğinizden Emin Mısiniz?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>*@
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 <a href="/NewOrder/@item.UserAddressId">Onayla</a>
                 
-                @*</div>
+                </div>
                 </div>
             </div>
-        </div>*@
+        </div>
             </td>
         </tr>
     }
@@ -80,4 +80,3 @@
         
     </fieldset>
 </div>
-@*@Html.ActionLink("Onayla","Index","Home")*@

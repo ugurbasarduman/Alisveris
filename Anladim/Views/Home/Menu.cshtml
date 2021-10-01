@@ -7,17 +7,3 @@
     </li>
 
 }
-
-
-@*" style="padding-top:8px; padding-bottom:8px; margin-top:18px">*@
-
-
-@*@model IEnumerable<Anladim.Models.EntityFramework.Category>
-
-    @foreach (var item in Model)
-    {
-
-        <li class="item"><a class="list-group-item-heading" href="/Kategori/@item.CategoryName.Replace(" ","-")/@item.CategoryId">@item.CategoryName</a></li>
-
-    }*@
-

@@ -107,10 +107,3 @@ namespace Anladim.Controllers
         }
     }
 }
-//mail = (string)Session["LoginUserMail"];
-//var loginUserId = db.Users.Where(x => x.Mail == mail).Select(y => y.UserId).FirstOrDefault();
-//userAddress.UserId = loginUserId;
-
-//db.UserAddresses.Add(userAddress);
-//db.SaveChanges();
-//return RedirectToAction("AddressList");

@@ -7,6 +7,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.AscSortParm = "asc";
     ViewBag.DescSortParm = "desc";
+    ViewBag.Min = "minprice";
+    ViewBag.Max = "maxprice";
 }
 
 
@@ -45,12 +47,13 @@
             </div>
         }
     </div>
-
+    @using (Html.BeginForm("FilterPrice", "Home", FormMethod.Get))
+    {
     <div>
-        <input type="text" name="min-price" placeholder="Min TL" />
-        <input type="text" name="max-price" placeholder="Max TL" />
-
-    </div>
+        <input type="number" name="minprice" placeholder="Min TL" />
+        <input type="number" name="maxprice" placeholder="Max TL" />
+        <button type="submit">Ok</button>
+    </div>}
 </div>
 
 <div class="row">
