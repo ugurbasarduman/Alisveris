@@ -85,7 +85,8 @@ namespace Anladim.Controllers
             }
             int check = IsExist(id);
             List<Cart> cart = (List<Cart>)Session[strCart];
-            cart.RemoveAt(check);
+            if(cart.Count>0)
+                cart.RemoveAt(check);
             return View("Index");
         }
 

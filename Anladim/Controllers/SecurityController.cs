@@ -10,7 +10,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
-
 namespace Anladim.Controllers
 {
     public class SecurityController : Controller
@@ -47,6 +46,5 @@ namespace Anladim.Controllers
             Session.Abandon();
             return Redirect("/");
         }
-
     }
 }

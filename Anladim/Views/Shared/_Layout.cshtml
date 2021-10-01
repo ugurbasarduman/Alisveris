@@ -15,11 +15,11 @@
     <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,600,700" rel="stylesheet">
 </head>
-<body>
+<body style="padding-top:100px;">
     <header class="item header margin-top-0">
         <div class="wrapper">
             <nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
-                <div style="display:flex; justify-content:center">
+                <div style="display:flex; justify-content:center; margin-bottom:-16px">
                     @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { style = "margin-top:2px", @class = "myClass" }))
                     {<p>
                             @Html.TextBox("searching", ViewBag.CurrentFilter as string, new { style = "width:450px" })
@@ -40,12 +40,14 @@
                     }
                     else if (User.IsInRole("A"))
                     {
-                        <p style="margin-top:-28px">
-                            <a href="/Cart"><i class="fa fa-shopping-cart"></i> Sepet</a> |
-                            <a href="/Siparislerim">Siparislerim</a> |
-                            <a href="/Profil">Profil</a> |
-                            @Html.ActionLink("Cıkış Yap", "Logout", "Security")
-                        </p>
+                <p style="margin-top:-28px">
+                    <a href="/Cart"><i class="fa fa-shopping-cart"></i> Sepet</a> |
+                    <a href="/Siparislerim">Siparislerim</a> |
+                    <a href="/Profil">Profil</a> |
+                    @Html.ActionLink("Admin Paneli", "Index", "AdminProducts") |
+                    @Html.ActionLink("Cıkış Yap", "Logout", "Security")
+
+                </p>
                     }
                     else
                     {
@@ -62,13 +64,15 @@
                     </button>
                     @Html.ActionLink("DUMAN", "Index", "Home", FormMethod.Post, new { @class = "navbar-brand brand", @style = "margin-top:-30px;" })
                 </div>
-               <div class="container">
-                        <div id="navbar-collapse-02" class="collapse navbar-collapse">
-                            <ul class="nav navbar-nav navbar-right">
-                                @Html.Action("Menu", "Home")
-                            </ul>
-                        </div>
+                <div class="container">
+                    <div id="navbar-collapse-02" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            @Html.Action("Menu", "Home")
+                            
+
+                        </ul>
                     </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -78,12 +82,6 @@
     <section class="item content">
         <div class="container toparea">
             <br />
-            @if (User.IsInRole("A"))
-            {
-                <div class="container">
-                    @Html.ActionLink("Admin Paneli", "Index", "AdminProducts")
-                </div>
-            }
             @RenderBody()
         </div>
     </section>
