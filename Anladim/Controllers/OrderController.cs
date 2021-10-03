@@ -52,8 +52,8 @@ namespace Anladim.Controllers
             order.TotalPrice = cart.Sum(x => x.Product.Price * x.Quantity);
             order.OrderProducts = new List<OrderProduct>();
             db.Orders.Add(order);
-            cart.Clear();
             db.SaveChanges();
+
 
             foreach (Cart item in cart)
             {
@@ -66,6 +66,7 @@ namespace Anladim.Controllers
 
                 db.SaveChanges();
             }
+            cart.Clear();
             return Redirect("/");
         }
 
@@ -87,35 +88,7 @@ namespace Anladim.Controllers
             var model = db.Orders.Where(x => x.UserId == loginUserId).OrderByDescending(x => x.OrderDate).ToList();
             return View(model);
         }
-        //public ActionResult NewOrder(int id, string mail)
-        //{
-        //    mail = (string)Session["LoginUserMail"];
-        //    var loginUserId = db.Users.Where(x => x.Mail == mail).Select(y => y.UserId).FirstOrDefault();
-        //    var sepet = db.Cart.Include("Product").Where(x => x.UserId == loginUserId).ToList();
-
-        //    Order order = new Order();
-        //    order.UserId = loginUserId;
-        //    order.UserAddressId = id;
-        //    order.TotalPrice = sepet.Sum(x => x.Product.Price);
-        //    order.OrderDate = DateTime.Now;
-        //    order.OrderProducts = new List<OrderProduct>();
-
-        //    foreach (var item in sepet)
-        //    {
-        //        order.OrderProducts.Add(new OrderProduct
-        //        {
-        //            OrderId = loginUserId,
-        //            Quantity = item.Quantity,
-        //            ProductId = item.ProductId
-        //        });
-        //        db.Cart.Remove(item);
-        //    }
-        //    db.Orders.Add(order);
-        //    //var orderid = db.Orders.Where(x => x.UserId == loginUserId).OrderByDescending(q => q.OrderDate).FirstOrDefault().OrderId;
-        //    db.SaveChanges();
-        //    return Redirect("/");
-        //    //return RedirectToAction("Detail",new {id=orderid });
-        //}
+        
 
     }
 }

@@ -32,13 +32,6 @@ namespace Anladim.Controllers
             return View(al);
         }
 
-
-        //public ActionResult Index()
-        //{
-        //    return View(db.Categories.ToList());
-        //}
-
-        // GET: AdminCategories/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
