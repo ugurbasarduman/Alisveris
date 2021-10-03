@@ -17,13 +17,14 @@ namespace Anladim.Models.EntityFramework
         [DataType(DataType.EmailAddress)]
         [EmailAddress]
         public string Mail { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Bos Birakilamaz")]
         [Display(Name = "Adınız")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Bos Birakilamaz")]
         [Display(Name = "Konu")]
         public string Subject { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Bos Birakilamaz")]
+        [MinLength(20)]
         [Display(Name = "Mesaj")]
         public string Message { get; set; }
     }

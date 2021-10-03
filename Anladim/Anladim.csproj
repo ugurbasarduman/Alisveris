@@ -152,7 +152,6 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProfilController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Data\Context.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -240,9 +239,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\UserrRoleProvider.cs" />
     <Compile Include="ViewModels\Cart.cs" />
-    <Compile Include="ViewModels\Crypto.cs" />
-    <Compile Include="ViewModels\ProfilFormViewModel.cs" />
-    <Compile Include="ViewModels\UserLogin.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -603,6 +599,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\PageController\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

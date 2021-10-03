@@ -4,10 +4,12 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Anladim.Data;
 using Anladim.Models.EntityFramework;
+using Anladim.ViewModels;
 
 namespace Anladim.Controllers
 {
@@ -24,7 +26,7 @@ namespace Anladim.Controllers
             {
                 return RedirectToAction("Logout", "Security");
             }
-            return View(db.Contacts.ToList());
+            return View(db.Contacts.OrderByDescending(x=>x.ContactId).ToList());
         }
 
         // GET: AdminContact/Details/5

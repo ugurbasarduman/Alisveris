@@ -39,9 +39,10 @@
             @Html.DisplayFor(modelItem => item.Subject)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Message)
+            @Html.DisplayFor(modelItem => item.Message).ToString().Substring(0,15)
         </td>
         <td>
+            @Html.ActionLink("Cevap", "AnswerIndex") |
             @Html.ActionLink("Detaylar", "Details", new { id=item.ContactId }) |
             @Html.ActionLink("Sil", "Delete", new { id=item.ContactId })
         </td>

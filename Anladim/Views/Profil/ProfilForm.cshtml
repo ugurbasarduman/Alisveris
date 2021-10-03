@@ -27,11 +27,6 @@
         @Html.ValidationMessageFor(x => x.Surname)
     </div>
     <div class=" form-group">
-        @Html.LabelFor(x => x.Mail, htmlAttributes: new { @class = "control-label col-md-2" })
-        @Html.EditorFor(x => x.Mail, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.Mail)
-    </div>
-    <div class=" form-group">
         @Html.LabelFor(x => x.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
         @Html.EditorFor(x => x.Phone, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.Phone)
