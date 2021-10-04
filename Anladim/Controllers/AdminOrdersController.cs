@@ -24,7 +24,7 @@ namespace Anladim.Controllers
             {
                 return RedirectToAction("Logout", "Security");
             }
-            var orders = db.Orders.Include(o => o.User).Include(o => o.UserAddress);
+            var orders = db.Orders.Include(o => o.User).Include(o => o.UserAddress).OrderByDescending(x=>x.OrderDate);
             var arama = from x in orders select x;
             if (!string.IsNullOrEmpty(searching))
             {

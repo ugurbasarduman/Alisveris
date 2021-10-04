@@ -6,10 +6,13 @@
 }
 
 <h2>İletişim</h2>
-
-<p>
-    @Html.ActionLink("Oluştur", "Create")
-</p>
+@using (Html.BeginForm("Index", "AdminContact", FormMethod.Get))
+{
+    <p>
+        Maile Gore Aranacak: @Html.TextBox("searching")
+        <input type="submit" value="ara" />
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -27,26 +30,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Subject)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Message).ToString().Substring(0,15)
-        </td>
-        <td>
-            @Html.ActionLink("Cevap", "AnswerIndex") |
-            @Html.ActionLink("Detaylar", "Details", new { id=item.ContactId }) |
-            @Html.ActionLink("Sil", "Delete", new { id=item.ContactId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message).ToString().Substring(0, 15)
+            </td>
+            <td>
+                @Html.ActionLink("Cevap", "Answer", new { id = item.ContactId }) |
+                @Html.ActionLink("Detaylar", "Details", new { id = item.ContactId }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.ContactId })
+            </td>
+        </tr>
+    }
 
 </table>

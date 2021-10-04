@@ -23,7 +23,8 @@ namespace Anladim.Controllers
             {
                 return RedirectToAction("Logout", "Security");
             }
-            var arama = from x in db.Categories select x;
+            var model = db.Categories.OrderByDescending(x => x.CategoryName);
+            var arama = from x in model select x;
             if (!string.IsNullOrEmpty(searching))
             {
                 arama = arama.Where(x => x.CategoryName.Contains(searching));

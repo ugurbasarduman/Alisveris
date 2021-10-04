@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using Anladim.Data;
 using Anladim.Models.EntityFramework;
@@ -19,14 +20,21 @@ namespace Anladim.Controllers
         private Context db = new Context();
 
         // GET: AdminContact
-        public ActionResult Index(string mail)
+        public ActionResult Index(string mail, string searching)
         {
             mail = (string)Session["LoginUserMail"];
             if (mail == null)
             {
                 return RedirectToAction("Logout", "Security");
             }
-            return View(db.Contacts.OrderByDescending(x=>x.ContactId).ToList());
+            var model = db.Contacts.OrderBy(x => x.ContactId).ToList();
+            var arama = from x in model select x;
+            if (!string.IsNullOrEmpty(searching))
+            {
+                arama = arama.Where(x => x.Mail.Contains(searching));
+            }
+            var al = arama.ToList();
+            return View(al);
         }
 
         // GET: AdminContact/Details/5
@@ -68,9 +76,29 @@ namespace Anladim.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
-
-
+        [HttpGet]
+        [Route("AdminContact/Answer/{id}")]
+        public ActionResult Answer(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Contact contact = db.Contacts.Find(id);
+            if (contact == null)
+            {
+                return HttpNotFound();
+            }
+            return View(contact);
+        }
+        [HttpPost]
+        public ActionResult Send(Contact contact, FormCollection form)
+        {
+            string body = form["icerik"];
+            WebMail.Send(contact.Mail, contact.Subject, body, null, null, null, true, null, null, null, null, null, null);
+            ViewBag.msg = "E-mail başarı ile gönderildi.";
+            return View("Answer");
+        }
 
         protected override void Dispose(bool disposing)
         {

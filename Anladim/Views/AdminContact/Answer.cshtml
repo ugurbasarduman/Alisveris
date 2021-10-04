@@ -1,0 +1,44 @@
+﻿@model Anladim.Models.EntityFramework.Contact
+@{
+    ViewBag.Title = "Answer";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Cevap</h2>
+@if(ViewBag.msg!=null)
+            {
+                <div class="alert alert-success">@ViewBag.msg</div>
+            }
+
+@using (Html.BeginForm("Send", "AdminContact", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("E-mail", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextBoxFor(x => x.Mail, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.Label("Isim", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextBoxFor(x => x.Name, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextBoxFor(x => x.Subject, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextAreaFor(x => x.Message, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="editor-label">
+        <label>İçerik</label>
+    </div>
+    <div class="editor-field">
+        <textarea rows="5" name="icerik"></textarea>
+    </div>
+
+    @Html.HiddenFor(x => x.ContactId)
+    <div id="edd_checkout_form_wrap" class="edd_clearfix">
+        <fieldset>
+            <button type="submit" class=" btn btn-info">Kaydet</button>
+        </fieldset>
+    </div>
+}

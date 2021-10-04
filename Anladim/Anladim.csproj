@@ -595,6 +595,7 @@
     <Content Include="Views\AdminContact\Delete.cshtml" />
     <Content Include="Views\AdminContact\Details.cshtml" />
     <Content Include="Views\AdminContact\Index.cshtml" />
+    <Content Include="Views\AdminContact\Answer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

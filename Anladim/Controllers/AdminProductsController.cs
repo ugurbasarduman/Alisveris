@@ -24,7 +24,7 @@ namespace Anladim.Controllers
             {
                 return RedirectToAction("Logout", "Security");
             }
-            var products = db.Products.Include(p => p.Category);
+            var products = db.Products.Include(p => p.Category).OrderByDescending(x=>x.ProductId);
             var arama = from x in products select x;
             if (!string.IsNullOrEmpty(searching))
             {
