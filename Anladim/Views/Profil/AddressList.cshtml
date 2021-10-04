@@ -39,8 +39,7 @@
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td>
-                @Html.ActionLink("Düzenle", "AddressEdit", new { id = item.UserAddressId }) |
-                @Html.ActionLink("Sil", "AddressDelete", new { id = item.UserAddressId })
+                @Html.ActionLink("Düzenle", "AddressEdit", new { id = item.UserAddressId }) 
             </td>
         </tr>
     }

@@ -16,7 +16,6 @@ namespace Anladim.Controllers
     {
         private Context db = new Context();
 
-        // GET: AdminProducts
         public ActionResult Index(string searching, string mail)
         {
             mail = (string)Session["LoginUserMail"];
@@ -33,7 +32,6 @@ namespace Anladim.Controllers
             return View(arama.ToList());
         }
 
-        // GET: AdminProducts/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -48,16 +46,13 @@ namespace Anladim.Controllers
             return View(product);
         }
 
-        // GET: AdminProducts/Create
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
             return View();
         }
 
-        // POST: AdminProducts/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductId,Name,CategoryId,Brand,Model,Image,Description,Price")] Product product)
@@ -73,7 +68,6 @@ namespace Anladim.Controllers
             return View(product);
         }
 
-        // GET: AdminProducts/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -89,9 +83,7 @@ namespace Anladim.Controllers
             return View(product);
         }
 
-        // POST: AdminProducts/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ProductId,Name,CategoryId,Brand,Model,Image,Description,Price")] Product product)
@@ -106,7 +98,6 @@ namespace Anladim.Controllers
             return View(product);
         }
 
-        // GET: AdminProducts/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -121,7 +112,6 @@ namespace Anladim.Controllers
             return View(product);
         }
 
-        // POST: AdminProducts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

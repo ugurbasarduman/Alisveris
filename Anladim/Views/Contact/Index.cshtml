@@ -20,7 +20,6 @@
 
 
     @ViewBag.Mesaj
-    @*@using (Ajax.BeginForm("Index", "Contact", new AjaxOptions { HttpMethod = "POST"}, new { id = "contactform" }))*@
     @using (Html.BeginForm("Index", "Contact", FormMethod.Post, new { id = "contactform" }))
     {
         @Html.AntiForgeryToken()
@@ -49,15 +48,6 @@
     }
 </div>
 
-@*<form method="post" action="Index" id="contactform">
-    <div class="form">
-        <input type="text" name="name" placeholder="Adınız*">
-        <input type="text" name="mail" placeholder="Mail Adresiniz*">
-        <input type="text" name="subject" placeholder="Konu*">
-        <textarea name="comment" rows="7" placeholder="Mesajınız*"></textarea>
-        <input type="submit" id="submit" class="clearfix btn" value="GÖNDER">
-    </div>
-</form>*@
 
 
 @section scripts{

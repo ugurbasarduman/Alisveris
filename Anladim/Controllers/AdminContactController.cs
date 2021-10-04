@@ -19,7 +19,7 @@ namespace Anladim.Controllers
     {
         private Context db = new Context();
 
-        // GET: AdminContact
+
         public ActionResult Index(string mail, string searching)
         {
             mail = (string)Session["LoginUserMail"];
@@ -37,7 +37,7 @@ namespace Anladim.Controllers
             return View(al);
         }
 
-        // GET: AdminContact/Details/5
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -51,7 +51,7 @@ namespace Anladim.Controllers
             }
             return View(contact);
         }
-        // GET: AdminContact/Delete/5
+
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -66,7 +66,7 @@ namespace Anladim.Controllers
             return View(contact);
         }
 
-        // POST: AdminContact/Delete/5
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

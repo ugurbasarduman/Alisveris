@@ -51,7 +51,6 @@ namespace Anladim.Controllers
             int pageSize = 12;
             int pageNumber = (page ?? 1);
             return View(al.ToPagedList(pageNumber, pageSize));
-            //return View(al.ToPagedList<Product>(_sayfano, 12));
         }
         [Route("Kategori/{isim}/{id}/FilterPrice")]
         public ActionResult FilterPrice(decimal? minPrice, decimal? maxPrice, int? page, int? id)

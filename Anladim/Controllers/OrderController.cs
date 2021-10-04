@@ -11,7 +11,7 @@ namespace Anladim.Controllers
 {
     public class OrderController : Controller
     {
-        // GET: Order
+
         Context db = new Context();
         [Route("AdresListesi")]
         public ActionResult AddressList(string mail)

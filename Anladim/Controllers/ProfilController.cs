@@ -23,7 +23,6 @@ namespace Anladim.Controllers
                 return RedirectToAction("Logout", "Security");
             }
             var loginUserId = db.Users.Where(x => x.Mail == mail).Select(x => x.UserId).FirstOrDefault();
-            //ViewBag.adres = db.UserAddresses.Where(x => x.UserId == loginUserId).ToList();
             var model = db.Users.Where(x => x.UserId == loginUserId).FirstOrDefault();
             return View(model);
         }
@@ -95,16 +94,16 @@ namespace Anladim.Controllers
             return RedirectToAction("AddressList","Profil");
         }
 
-        public ActionResult AddressDelete(int id)
-        {
-            var model = db.UserAddresses.Find(id);
-            if(model == null)
-            {
-                return HttpNotFound();
-            }
-            db.UserAddresses.Remove(model);
-            db.SaveChanges();
-            return RedirectToAction("AddressList","Profil");
-        }
+        //public ActionResult AddressDelete(int id)
+        //{
+        //    var model = db.UserAddresses.Find(id);
+        //    if(model == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    db.UserAddresses.Remove(model);
+        //    db.SaveChanges();
+        //    return RedirectToAction("AddressList","Profil");
+        //}
     }
 }

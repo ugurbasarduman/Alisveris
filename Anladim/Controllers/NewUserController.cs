@@ -13,7 +13,6 @@ namespace Anladim.Controllers
 {
     public class NewUserController : Controller
     {
-        // GET: NewUser
         Context db = new Context();
 
         [HttpGet]

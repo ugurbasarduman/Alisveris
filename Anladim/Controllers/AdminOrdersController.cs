@@ -16,7 +16,6 @@ namespace Anladim.Controllers
     {
         private Context db = new Context();
 
-        // GET: AdminOrders
         public ActionResult Index(string searching, string mail)
         {
             mail = (string)Session["LoginUserMail"];
@@ -32,11 +31,9 @@ namespace Anladim.Controllers
             }
             var al = arama.ToList();
             return View(al);
-            
-            //return View(orders.ToList());
+
         }
 
-        // GET: AdminOrders/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -50,8 +47,7 @@ namespace Anladim.Controllers
             }
             return View(order);
         }
-      
-        // GET: AdminOrders/Edit/5
+
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -68,9 +64,7 @@ namespace Anladim.Controllers
             return View(order);
         }
 
-        // POST: AdminOrders/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "OrderId,UserId,UserAddressId,OrderDate,TotalPrice")] Order order)
@@ -86,7 +80,6 @@ namespace Anladim.Controllers
             return View(order);
         }
 
-        // GET: AdminOrders/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -101,7 +94,6 @@ namespace Anladim.Controllers
             return View(order);
         }
 
-        // POST: AdminOrders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -21,7 +21,6 @@ namespace Anladim.Controllers
         {
             return View();
         }
-        //[Route("GirisYap")]
         [HttpPost]
         public ActionResult Login(User user)
         {

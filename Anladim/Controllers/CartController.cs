@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace Anladim.Controllers
 {
-    [Authorize(Roles = "U,A")] //Duzenlenecek
+    [Authorize(Roles = "U,A")]
     public class CartController : Controller
     {
         Context db = new Context();
