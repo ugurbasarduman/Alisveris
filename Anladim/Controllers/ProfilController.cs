@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Anladim.Controllers
 {
+    [Authorize(Roles ="U,A")]
     public class ProfilController : Controller
     {
         Context db = new Context();
