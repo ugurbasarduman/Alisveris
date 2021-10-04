@@ -35,7 +35,7 @@ namespace Anladim.Controllers
             }
             else
             {
-                ViewBag.Mesaj = "Gecersiz Kullanici adi ve sifre";
+                ViewBag.msj = "Gecersiz Kullanici adi ve sifre";
                 return View();
             }
 

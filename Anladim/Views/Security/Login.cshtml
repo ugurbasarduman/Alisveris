@@ -5,7 +5,7 @@
 
 <!DOCTYPE html>
 
-<html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content="">
@@ -17,35 +17,40 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <title>Login</title>
 </head>
-<body>
-    <div class="container toparea">
-        <div id="edd_checkout_wrap" class="col-md-8 col-md-offset-2">
-            <div id="edd_checkout_form_wrap" class="edd_clearfix">
-                @ViewBag.Mesaj
-                @using (Html.BeginForm("Login", "Security", FormMethod.Post, new { @class = "edd_form", id = "edd_purchase_form" }))
-                {
-                <fieldset id="edd_checkout_user_info" style="margin-top:25%; margin-right:22%; margin-left:22%; font-size:16px; line-height:1.7">
-                    <p id="edd-email-wrap">
-                        @Html.LabelFor(x => x.Mail, new { @class = "edd-label" })
-                        @Html.TextBoxFor(x => x.Mail, new { @class = "edd-input required", id = "edd-email" })
-                    </p>
-                    <p id="edd-password-wrap">
-                        @Html.LabelFor(x => x.Password, new { @class = "edd-label" })
-                        @Html.PasswordFor(x => x.Password, new { @class = "edd-input required", id = "edd-password" })
-                    </p>
-                    <div class="row" style="display:inline-flex; margin-top:15px">
-                        <button type="submit" class="btn btn-block btn-success" style="margin-left:15px">Giris Yap</button>
-                        <a href="/KayitOl">
-                            <input type="button" class="btn btn-info btn-info" style="margin-left:7px" value="Kayıt Ol" />
-                        </a>
-                    </div>
-                </fieldset>
-                }
-            </div>
-        </div>
+
+    
+
+<div id="edd_checkout_wrap" class="col-md-8 col-md-offset-2">
+    
+    <div id="edd_checkout_form_wrap" class="edd_clearfix" style="margin-top: 15%;">
+        @if (ViewBag.msj != null)
+        {
+            <div class="alert alert-success" style="margin-left:30%; margin-right:27%; ">@ViewBag.msj</div>
+        }
+        @using (Html.BeginForm("Login", "Security", FormMethod.Post, new { @class = "edd_form", id = "edd_purchase_form" }))
+        {
+            <fieldset id="edd_checkout_user_info" style="margin-left:30%; margin-right:27%; font-size:16px; line-height:1.7">
+                <p id="edd-email-wrap">
+                    @Html.LabelFor(x => x.Mail, new { @class = "edd-label" })
+                    @Html.TextBoxFor(x => x.Mail, new { @class = "edd-input required", id = "edd-email" })
+                </p>
+                <p id="edd-password-wrap">
+                    @Html.LabelFor(x => x.Password, new { @class = "edd-label" })
+                    @Html.PasswordFor(x => x.Password, new { @class = "edd-input required", id = "edd-password" })
+                </p>
+                <div class="row" style="display:inline-flex; margin-top:15px">
+                    <button type="submit" class="btn btn-block btn-success" style="margin-left:15px">Giris Yap</button>
+                    <a href="/KayitOl">
+                        <input type="button" class="btn btn-info btn-info" style="margin-left:7px" value="Kayıt Ol" />
+                    </a>
+                </div>
+            </fieldset>
+        }
     </div>
-</body>
-</html>
+</div>
+
+
+
 
 
 @*<div class="container">
