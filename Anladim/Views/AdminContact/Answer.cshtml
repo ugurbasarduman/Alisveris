@@ -5,10 +5,10 @@
 }
 
 <h2>Cevap</h2>
-@if(ViewBag.msg!=null)
-            {
-                <div class="alert alert-success">@ViewBag.msg</div>
-            }
+@if (ViewBag.msg != null)
+{
+    <div class="alert alert-success">@ViewBag.msg</div>
+}
 
 @using (Html.BeginForm("Send", "AdminContact", FormMethod.Post))
 {
@@ -31,8 +31,17 @@
     <div class="editor-label">
         <label>İçerik</label>
     </div>
-    <div class="editor-field">
-        <textarea rows="5" name="icerik"></textarea>
+    <div class="form-group">
+        <textarea class="form-control" rows="6" name="icerik"></textarea>
+    </div>
+    <div class="radio">
+        <label>
+            @Html.RadioButtonFor(x => x.isAnswered, true) Cevaplandi
+        </label>
+        <label>
+            @Html.RadioButtonFor(x => x.isAnswered, false) Cevaplanmadi
+        </label>
+        @Html.ValidationMessageFor(x => x.isAnswered)
     </div>
 
     @Html.HiddenFor(x => x.ContactId)

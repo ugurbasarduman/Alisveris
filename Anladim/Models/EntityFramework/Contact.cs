@@ -27,5 +27,7 @@ namespace Anladim.Models.EntityFramework
         [MinLength(20)]
         [Display(Name = "Mesaj")]
         public string Message { get; set; }
+        [Display(Name="Cevaplandı Mı?")]
+        public bool isAnswered { get; set; }
     }
 }

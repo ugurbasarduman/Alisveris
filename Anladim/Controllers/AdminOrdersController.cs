@@ -50,34 +50,7 @@ namespace Anladim.Controllers
             }
             return View(order);
         }
-
-        // GET: AdminOrders/Create
-        public ActionResult Create()
-        {
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "Name");
-            ViewBag.UserAddressId = new SelectList(db.UserAddresses, "UserAddressId", "Title");
-            return View();
-        }
-
-        // POST: AdminOrders/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderId,UserId,UserAddressId,OrderDate,TotalPrice")] Order order)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Orders.Add(order);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "Name", order.UserId);
-            ViewBag.UserAddressId = new SelectList(db.UserAddresses, "UserAddressId", "Title", order.UserAddressId);
-            return View(order);
-        }
-
+      
         // GET: AdminOrders/Edit/5
         public ActionResult Edit(int? id)
         {

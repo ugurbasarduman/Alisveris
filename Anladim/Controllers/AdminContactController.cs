@@ -27,7 +27,7 @@ namespace Anladim.Controllers
             {
                 return RedirectToAction("Logout", "Security");
             }
-            var model = db.Contacts.OrderBy(x => x.ContactId).ToList();
+            var model = db.Contacts.OrderByDescending(x => x.ContactId).ToList();
             var arama = from x in model select x;
             if (!string.IsNullOrEmpty(searching))
             {
@@ -97,6 +97,8 @@ namespace Anladim.Controllers
             string body = form["icerik"];
             WebMail.Send(contact.Mail, contact.Subject, body, null, null, null, true, null, null, null, null, null, null);
             ViewBag.msg = "E-mail başarı ile gönderildi.";
+            db.Entry(contact).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
             return View("Answer");
         }
 

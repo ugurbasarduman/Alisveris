@@ -228,6 +228,10 @@
     <Compile Include="Migrations\202110011142054_addressrules.Designer.cs">
       <DependentUpon>202110011142054_addressrules.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110040841476_contactsisanswered.cs" />
+    <Compile Include="Migrations\202110040841476_contactsisanswered.Designer.cs">
+      <DependentUpon>202110040841476_contactsisanswered.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityFramework\Category.cs" />
     <Compile Include="Models\EntityFramework\Contact.cs" />
@@ -569,7 +573,6 @@
     <Content Include="Views\AdminUsers\Details.cshtml" />
     <Content Include="Views\AdminUsers\Edit.cshtml" />
     <Content Include="Views\AdminUsers\Index.cshtml" />
-    <Content Include="Views\AdminOrders\Create.cshtml" />
     <Content Include="Views\AdminOrders\Delete.cshtml" />
     <Content Include="Views\AdminOrders\Details.cshtml" />
     <Content Include="Views\AdminOrders\Edit.cshtml" />
@@ -667,6 +670,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110011142054_addressrules.resx">
       <DependentUpon>202110011142054_addressrules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110040841476_contactsisanswered.resx">
+      <DependentUpon>202110040841476_contactsisanswered.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
