@@ -43,61 +43,6 @@ namespace Anladim.Controllers
             }
             return View(contact);
         }
-
-        // GET: AdminContact/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: AdminContact/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ContactId,Mail,Name,Subject,Message")] Contact contact)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Contacts.Add(contact);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(contact);
-        }
-
-        // GET: AdminContact/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Contact contact = db.Contacts.Find(id);
-            if (contact == null)
-            {
-                return HttpNotFound();
-            }
-            return View(contact);
-        }
-
-        // POST: AdminContact/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ContactId,Mail,Name,Subject,Message")] Contact contact)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(contact).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(contact);
-        }
-
         // GET: AdminContact/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -123,6 +68,9 @@ namespace Anladim.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+
 
         protected override void Dispose(bool disposing)
         {

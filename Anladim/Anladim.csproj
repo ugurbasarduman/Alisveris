@@ -592,7 +592,6 @@
     <Content Include="Views\Profil\NewUserAddressProfiles.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\AdminContact.cshtml" />
-    <Content Include="Views\AdminContact\Create.cshtml" />
     <Content Include="Views\AdminContact\Delete.cshtml" />
     <Content Include="Views\AdminContact\Details.cshtml" />
     <Content Include="Views\AdminContact\Index.cshtml" />

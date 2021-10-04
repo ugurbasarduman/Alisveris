@@ -18,8 +18,8 @@ namespace Anladim.Controllers
         public ActionResult Index(string sortOrder, string currentFilter, string searching, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.DescSortParm = String.IsNullOrEmpty(sortOrder) ? "desc" : "";
-            ViewBag.AscSortParm = String.IsNullOrEmpty(sortOrder) ? "asc" : "";
+            ViewBag.DescSortParm = string.IsNullOrEmpty(sortOrder) ? "desc" : "";
+            ViewBag.AscSortParm = string.IsNullOrEmpty(sortOrder) ? "asc" : "";
             var model = db.Products.Include(x => x.Category).ToList();
 
             if (searching != null)
@@ -32,7 +32,7 @@ namespace Anladim.Controllers
             }
             ViewBag.CurrentFilter = searching;
             var al = from x in model select x;
-            if (!String.IsNullOrEmpty(searching))
+            if (!string.IsNullOrEmpty(searching))
             {
                 al = al.Where(x => x.Name.ToLower().Contains(searching) || x.Name.ToUpper().Contains(searching) || x.Model.ToLower().Contains(searching) || 
                 x.Model.ToUpper().Contains(searching) || x.Brand.ToLower().Contains(searching) || x.Brand.ToUpper().Contains(searching)||
